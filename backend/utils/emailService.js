@@ -1,65 +1,43 @@
-const nodemailer = require('nodemailer');
+// ─── emailService.js — uses Resend HTTP API (works on Render free tier) ───────
 
-// ─── Create transporter ────────────────────────────────────────────────────────
-// Using explicit Gmail SMTP settings with tight timeouts so a bad connection
-// never hangs the server or any API request.
-const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST || 'smtp.gmail.com',
-  port: parseInt(process.env.EMAIL_PORT) || 587,
-  secure: false, // STARTTLS on port 587
-  auth: {
-    user: process.env.EMAIL_USERNAME,
-    pass: process.env.EMAIL_PASSWORD, // Must be a Gmail App Password, NOT your Gmail login password
-  },
-  // These timeouts prevent any email operation from hanging indefinitely
-  connectionTimeout: 8000,   // 8s to establish TCP connection
-  greetingTimeout:  8000,    // 8s to receive SMTP greeting
-  socketTimeout:    10000,   // 10s of inactivity before giving up
-});
-
-// ─── Non-blocking startup verify ──────────────────────────────────────────────
-// We intentionally do NOT await this. If SMTP is misconfigured we just log it;
-// we never let it delay server startup or block any request.
-transporter.verify()
-  .then(() => console.log('✅ Email service ready'))
-  .catch(err => console.error('⚠️  Email service unavailable (emails will be skipped):', err.message));
-
-// ─── Core send helper ──────────────────────────────────────────────────────────
-// Returns true on success, false on any failure. Never throws.
-// Has its own 15-second hard timeout via Promise.race so even if nodemailer
-// hangs internally, the caller is unblocked.
-const sendNotificationEmail = (to, subject, html) => {
+const sendNotificationEmail = async (to, subject, html) => {
   if (process.env.EMAIL_ENABLED !== 'true') {
     console.log('Email notifications disabled (EMAIL_ENABLED != true)');
-    return Promise.resolve(false);
+    return false;
   }
 
-  const sendPromise = transporter.sendMail({
-    from: `"${process.env.EMAIL_FROM_NAME || 'CivicDesk'}" <${process.env.EMAIL_FROM || process.env.EMAIL_USERNAME}>`,
-    to,
-    subject,
-    html,
-  }).then(info => {
-    console.log('✅ Email sent to', to, '| id:', info.messageId);
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        from: `${process.env.EMAIL_FROM_NAME || 'CivicDesk'} <${process.env.EMAIL_FROM}>`,
+        to,
+        subject,
+        html
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error('❌ Email send failed to', to, '|', data.message || JSON.stringify(data));
+      return false;
+    }
+
+    console.log('✅ Email sent to', to, '| id:', data.id);
     return true;
-  }).catch(err => {
-    console.error('❌ Email send failed to', to, '|', err.message);
+
+  } catch (err) {
+    console.error('❌ Email error for', to, '|', err.message);
     return false;
-  });
-
-  // Hard 15-second ceiling — nodemailer can occasionally hang past socketTimeout
-  const timeoutPromise = new Promise(resolve =>
-    setTimeout(() => {
-      console.error('❌ Email timed out (15s) for', to);
-      resolve(false);
-    }, 15000)
-  );
-
-  return Promise.race([sendPromise, timeoutPromise]);
+  }
 };
 
 // ─── Template functions ────────────────────────────────────────────────────────
-// All return a Promise<boolean>. Callers should fire-and-forget with .catch().
 
 const sendStatusChangeEmail = (userEmail, userName, complaintTitle, oldStatus, newStatus, reason) => {
   const subject = `Complaint Status Updated: ${complaintTitle}`;
