@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  limits: { fileSize: 5 * 1024 * 1024 },
   fileFilter: (req, file, cb) => {
     const allowedTypes = /jpeg|jpg|png|gif|pdf|doc|docx|txt/;
     const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
@@ -34,12 +34,12 @@ const upload = multer({
   }
 });
 
-// Create uploads directory if it doesn't exist
 const fs = require('fs');
 if (!fs.existsSync('uploads')) {
   fs.mkdirSync('uploads');
 }
 
+// POST /api/complaints - Create complaint
 router.post('/', authMiddleware, upload.array('attachments', 5), async (req, res) => {
   try {
     const { title, description, deptId } = req.body;
@@ -77,6 +77,7 @@ router.post('/', authMiddleware, upload.array('attachments', 5), async (req, res
   }
 });
 
+// GET /api/complaints - Get all complaints (admin: all, user: own)
 router.get('/', authMiddleware, async (req, res) => {
   try {
     let query = {};
@@ -96,6 +97,7 @@ router.get('/', authMiddleware, async (req, res) => {
   }
 });
 
+// GET /api/complaints/department/:deptId - Get complaints by department
 router.get('/department/:deptId', authMiddleware, adminMiddleware, async (req, res) => {
   try {
     const complaints = await Complaint.find({ deptId: req.params.deptId })
@@ -109,6 +111,7 @@ router.get('/department/:deptId', authMiddleware, adminMiddleware, async (req, r
   }
 });
 
+// GET /api/complaints/:id - Get single complaint with responses
 router.get('/:id', authMiddleware, async (req, res) => {
   try {
     const complaint = await Complaint.findById(req.params.id)
@@ -139,6 +142,7 @@ router.get('/:id', authMiddleware, async (req, res) => {
   }
 });
 
+// PATCH /api/complaints/:id/status - Update complaint status (admin only)
 router.patch('/:id/status', authMiddleware, adminMiddleware, async (req, res) => {
   try {
     const { status, reason } = req.body;
@@ -154,12 +158,10 @@ router.patch('/:id/status', authMiddleware, adminMiddleware, async (req, res) =>
     }
 
     const oldStatus = complaint.status;
-
-    // Update status
     complaint.status = status;
     await complaint.save();
 
-    // If reason provided, create a response
+    // Save reason as a response record
     if (reason && reason.trim()) {
       const response = new Response({
         complaintId: req.params.id,
@@ -170,35 +172,37 @@ router.patch('/:id/status', authMiddleware, adminMiddleware, async (req, res) =>
       await response.save();
     }
 
-    // Send email notification to user
-    try {
-      const user = await User.findById(complaint.userId);
-      if (user) {
-        await sendStatusChangeEmail(
-          user.email,
-          user.name,
-          complaint.title,
-          oldStatus,
-          status,
-          reason || 'No reason provided'
-        );
-      }
-    } catch (emailError) {
-      console.error('Email notification failed:', emailError);
-      // Don't fail the request if email fails
-    }
-
+    // Respond to client immediately — do NOT await email
     const populatedComplaint = await Complaint.findById(req.params.id)
       .populate('userId', 'name email')
       .populate('deptId', 'name');
 
     res.json({ success: true, data: populatedComplaint });
+
+    // Fire email in background AFTER response is sent
+    User.findById(complaint.userId)
+      .then(user => {
+        if (user) {
+          return sendStatusChangeEmail(
+            user.email,
+            user.name,
+            complaint.title,
+            oldStatus,
+            status,
+            reason || 'No reason provided'
+          );
+        }
+      })
+      .catch(emailError => {
+        console.error('Status change email failed (non-blocking):', emailError.message);
+      });
+
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
 });
 
-// Flag/unflag complaint - admin only
+// PATCH /api/complaints/:id/flag - Flag or authenticate a complaint (admin only)
 router.patch('/:id/flag', authMiddleware, adminMiddleware, async (req, res) => {
   try {
     const { flagged, flagNote } = req.body;
@@ -213,36 +217,38 @@ router.patch('/:id/flag', authMiddleware, adminMiddleware, async (req, res) => {
       return res.status(404).json({ success: false, message: 'Complaint not found' });
     }
 
-    // Update flag fields
     complaint.flagged = flagged;
     if (flagNote !== undefined) {
       complaint.flagNote = flagNote;
     }
     await complaint.save();
 
-    if (flagged === true) {
-      try {
-        // Populate user details
-        const populatedComplaint = await Complaint.findById(complaint._id).populate('userId', 'name email');
-        if (populatedComplaint && populatedComplaint.userId) {
-          await sendFlaggedComplaintEmail(
-            populatedComplaint.userId.email,
-            populatedComplaint.userId.name,
-            populatedComplaint.title,
-            flagNote
-          );
-        }
-      } catch (emailError) {
-        // Email failure must never crash the server or fail the API response
-        console.error('Flag email error:', emailError);
-      }
-    }
-
+    // Respond to client immediately — do NOT await email
     const populatedComplaint = await Complaint.findById(req.params.id)
       .populate('userId', 'name email')
       .populate('deptId', 'name');
 
     res.json({ success: true, data: populatedComplaint });
+
+    // Fire flag email in background AFTER response is sent (only if flagged)
+    if (flagged === true) {
+      Complaint.findById(complaint._id)
+        .populate('userId', 'name email')
+        .then(pop => {
+          if (pop && pop.userId) {
+            return sendFlaggedComplaintEmail(
+              pop.userId.email,
+              pop.userId.name,
+              pop.title,
+              flagNote
+            );
+          }
+        })
+        .catch(emailError => {
+          console.error('Flag email failed (non-blocking):', emailError.message);
+        });
+    }
+
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

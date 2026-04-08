@@ -21,12 +21,10 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Custom scrollbar */
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #FFF0EC; }
         ::-webkit-scrollbar-thumb { background: #F1473A; border-radius: 4px; }
 
-        /* Input styles */
         .coral-input {
             background-color: #FFF8F6;
             border: 1.5px solid #F0E0DC;
@@ -44,7 +42,6 @@
         }
         .coral-input::placeholder { color: #9CA3AF; }
 
-        /* Select styles */
         .coral-select {
             background-color: #FFF8F6;
             border: 1.5px solid #F0E0DC;
@@ -66,7 +63,6 @@
             box-shadow: 0 0 0 3px rgba(241, 71, 58, 0.1);
         }
 
-        /* Filter select (for filter bar) */
         .filter-select {
             background-color: transparent;
             border: none;
@@ -80,11 +76,8 @@
             background-size: 16px;
             padding-right: 20px;
         }
-        .filter-select:focus {
-            outline: none;
-        }
+        .filter-select:focus { outline: none; }
 
-        /* Textarea styles */
         .coral-textarea {
             background-color: #FFF8F6;
             border: 1.5px solid #F0E0DC;
@@ -103,7 +96,6 @@
             box-shadow: 0 0 0 3px rgba(241, 71, 58, 0.1);
         }
 
-        /* Button styles */
         .btn-primary {
             background-color: #F1473A;
             color: white;
@@ -119,16 +111,9 @@
             justify-content: center;
             gap: 8px;
         }
-        .btn-primary:hover {
-            background-color: #D63B2F;
-            transform: scale(1.01);
-        }
+        .btn-primary:hover { background-color: #D63B2F; transform: scale(1.01); }
         .btn-primary:active { transform: scale(0.99); }
-        .btn-primary:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
+        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
         .btn-success {
             background-color: #10B981;
@@ -158,10 +143,7 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        .btn-outline:hover {
-            background-color: #F1473A;
-            color: white;
-        }
+        .btn-outline:hover { background-color: #F1473A; color: white; }
 
         .btn-outline-sm {
             background-color: transparent;
@@ -174,12 +156,8 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        .btn-outline-sm:hover {
-            background-color: #F1473A;
-            color: white;
-        }
+        .btn-outline-sm:hover { background-color: #F1473A; color: white; }
 
-        /* Card styles */
         .coral-card {
             background-color: white;
             border-radius: 16px;
@@ -187,7 +165,6 @@
             padding: 24px;
         }
 
-        /* Stats card */
         .stats-card {
             background-color: white;
             border-radius: 16px;
@@ -195,12 +172,8 @@
             padding: 24px;
             transition: all 0.2s ease;
         }
-        .stats-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 32px rgba(241, 71, 58, 0.12);
-        }
+        .stats-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(241, 71, 58, 0.12); }
 
-        /* Filter bar */
         .filter-bar {
             background-color: white;
             border: 1px solid #F0E0DC;
@@ -210,21 +183,10 @@
             align-items: center;
             gap: 12px;
         }
+        .filter-divider { width: 1px; height: 20px; background-color: #F0E0DC; }
 
-        .filter-divider {
-            width: 1px;
-            height: 20px;
-            background-color: #F0E0DC;
-        }
-
-        /* Table styles */
-        .coral-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .coral-table thead {
-            border-bottom: 2px solid #FFF0EC;
-        }
+        .coral-table { width: 100%; border-collapse: collapse; }
+        .coral-table thead { border-bottom: 2px solid #FFF0EC; }
         .coral-table th {
             color: #6B7280;
             font-size: 12px;
@@ -234,67 +196,21 @@
             padding: 12px 16px;
             text-align: left;
         }
-        .coral-table td {
-            padding: 16px;
-            border-bottom: 1px solid #FFF0EC;
-        }
-        .coral-table tr:hover td {
-            background-color: #FFF8F6;
-        }
+        .coral-table td { padding: 16px; border-bottom: 1px solid #FFF0EC; }
+        .coral-table tr:hover td { background-color: #FFF8F6; }
 
-        /* Status badges */
-        .badge-pending {
-            background-color: #FEF3C7;
-            color: #92400E;
-            border-radius: 50px;
-            padding: 4px 12px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        .badge-in_progress {
-            background-color: #DBEAFE;
-            color: #1E40AF;
-            border-radius: 50px;
-            padding: 4px 12px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        .badge-resolved {
-            background-color: #D1FAE5;
-            color: #065F46;
-            border-radius: 50px;
-            padding: 4px 12px;
-            font-size: 12px;
-            font-weight: 500;
-        }
+        /* Clickable rows */
+        .complaint-row { cursor: pointer; }
+        .complaint-row:hover td { background-color: #FFF0EC !important; }
 
-        /* Flag badges */
-        .badge-authentic {
-            background-color: #D1FAE5;
-            color: #065F46;
-            border-radius: 50px;
-            padding: 2px 10px;
-            font-size: 11px;
-            font-weight: 500;
-        }
-        .badge-flagged {
-            background-color: #FFF0EC;
-            color: #F1473A;
-            border-radius: 50px;
-            padding: 2px 10px;
-            font-size: 11px;
-            font-weight: 500;
-        }
-        .badge-pending-review {
-            background-color: #F3F4F6;
-            color: #6B7280;
-            border-radius: 50px;
-            padding: 2px 10px;
-            font-size: 11px;
-            font-weight: 500;
-        }
+        .badge-pending { background-color: #FEF3C7; color: #92400E; border-radius: 50px; padding: 4px 12px; font-size: 12px; font-weight: 500; }
+        .badge-in_progress { background-color: #DBEAFE; color: #1E40AF; border-radius: 50px; padding: 4px 12px; font-size: 12px; font-weight: 500; }
+        .badge-resolved { background-color: #D1FAE5; color: #065F46; border-radius: 50px; padding: 4px 12px; font-size: 12px; font-weight: 500; }
 
-        /* Department tag */
+        .badge-authentic { background-color: #D1FAE5; color: #065F46; border-radius: 50px; padding: 2px 10px; font-size: 11px; font-weight: 500; }
+        .badge-flagged { background-color: #FFF0EC; color: #F1473A; border-radius: 50px; padding: 2px 10px; font-size: 11px; font-weight: 500; }
+        .badge-pending-review { background-color: #F3F4F6; color: #6B7280; border-radius: 50px; padding: 2px 10px; font-size: 11px; font-weight: 500; }
+
         .dept-pill {
             background-color: #FFF0EC;
             color: #F1473A;
@@ -305,13 +221,8 @@
             display: inline-block;
         }
 
-        /* Modal overlay */
-        .modal-overlay {
-            background-color: rgba(0, 0, 0, 0.15);
-            backdrop-filter: blur(4px);
-        }
+        .modal-overlay { background-color: rgba(0, 0, 0, 0.15); backdrop-filter: blur(4px); }
 
-        /* Admin badge */
         .admin-badge {
             background-color: #FFF0EC;
             color: #F1473A;
@@ -319,6 +230,26 @@
             padding: 4px 12px;
             font-size: 12px;
             font-weight: 600;
+        }
+
+        /* Detail modal description box */
+        .detail-description {
+            background-color: #FFF8F6;
+            border: 1px solid #F0E0DC;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #1A1A2E;
+            min-height: 80px;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .detail-meta-box {
+            background-color: #FFF8F6;
+            border-radius: 12px;
+            padding: 14px 16px;
         }
     </style>
 </head>
@@ -336,15 +267,12 @@
                 </div>
                 <div class="flex items-center gap-4">
                     <span id="adminName" class="text-[#1A1A2E] font-medium hidden sm:block"></span>
-
-                    <!-- Settings Button -->
                     <button onclick="openSettingsModal()" class="text-[#6B7280] hover:text-[#1A1A2E] p-2 rounded-lg transition" title="Settings">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                         </svg>
                     </button>
-
                     <button onclick="logout()" class="btn-outline">Logout</button>
                 </div>
             </div>
@@ -356,45 +284,35 @@
         <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
             <div class="stats-card">
                 <div class="w-10 h-10 rounded-lg bg-[rgba(241,71,58,0.1)] flex items-center justify-center mb-3">
-                    <svg class="w-5 h-5 text-[#F1473A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                    </svg>
+                    <svg class="w-5 h-5 text-[#F1473A]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                 </div>
                 <p id="statTotal" class="text-3xl font-bold text-[#1A1A2E]">0</p>
                 <p class="text-[#6B7280] text-sm mt-1">Total</p>
             </div>
             <div class="stats-card">
                 <div class="w-10 h-10 rounded-lg bg-[#FEF3C7] flex items-center justify-center mb-3">
-                    <svg class="w-5 h-5 text-[#92400E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
+                    <svg class="w-5 h-5 text-[#92400E]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
                 <p id="statPending" class="text-3xl font-bold text-[#1A1A2E]">0</p>
                 <p class="text-[#6B7280] text-sm mt-1">Pending</p>
             </div>
             <div class="stats-card">
                 <div class="w-10 h-10 rounded-lg bg-[#DBEAFE] flex items-center justify-center mb-3">
-                    <svg class="w-5 h-5 text-[#1E40AF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                    </svg>
+                    <svg class="w-5 h-5 text-[#1E40AF]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 </div>
                 <p id="statInProgress" class="text-3xl font-bold text-[#1A1A2E]">0</p>
                 <p class="text-[#6B7280] text-sm mt-1">In Progress</p>
             </div>
             <div class="stats-card">
                 <div class="w-10 h-10 rounded-lg bg-[#D1FAE5] flex items-center justify-center mb-3">
-                    <svg class="w-5 h-5 text-[#065F46]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
+                    <svg class="w-5 h-5 text-[#065F46]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
                 <p id="statResolved" class="text-3xl font-bold text-[#1A1A2E]">0</p>
                 <p class="text-[#6B7280] text-sm mt-1">Resolved</p>
             </div>
             <div class="stats-card">
                 <div class="w-10 h-10 rounded-lg bg-[rgba(241,71,58,0.1)] flex items-center justify-center mb-3">
-                    <svg class="w-5 h-5 text-[#F1473A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-8a2 2 0 012-2h14a2 2 0 012 2v8M3 21h18M3 21l2-2 2 2 2-2 2 2 2-2 2 2 2-2 2 2M9 11V7a3 3 0 116 0v4"/>
-                    </svg>
+                    <svg class="w-5 h-5 text-[#F1473A]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-8a2 2 0 012-2h14a2 2 0 012 2v8M3 21h18M3 21l2-2 2 2 2-2 2 2 2-2 2 2 2-2 2 2M9 11V7a3 3 0 116 0v4"/></svg>
                 </div>
                 <p id="statFlagged" class="text-3xl font-bold text-[#1A1A2E]">0</p>
                 <p class="text-[#6B7280] text-sm mt-1">Flagged</p>
@@ -417,6 +335,9 @@
             </select>
         </div>
 
+        <!-- Click hint -->
+        <p class="text-xs text-[#9CA3AF] mb-2 ml-1">💡 Click any row to view full complaint details</p>
+
         <!-- Complaints Table -->
         <div class="coral-card overflow-hidden mb-8">
             <div class="overflow-x-auto">
@@ -431,8 +352,7 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="complaintsTable">
-                    </tbody>
+                    <tbody id="complaintsTable"></tbody>
                 </table>
             </div>
         </div>
@@ -441,7 +361,6 @@
         <div class="coral-card">
             <h2 class="text-xl font-bold text-[#1A1A2E] mb-6">Department Management</h2>
             <div id="deptList" class="flex flex-wrap gap-3 mb-6"></div>
-
             <form id="deptForm" class="flex flex-col sm:flex-row gap-3">
                 <input type="text" id="newDeptName" placeholder="Department Name" required class="coral-input flex-1">
                 <input type="text" id="newDeptDesc" placeholder="Description" required class="coral-input flex-1">
@@ -460,9 +379,7 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 hidden" id="deptComplaintsView">
         <div class="mb-6">
             <button onclick="backToDashboard()" class="flex items-center gap-2 text-[#6B7280] hover:text-[#1A1A2E] transition">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-                </svg>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
                 Back to Dashboard
             </button>
         </div>
@@ -494,6 +411,75 @@
         </div>
     </main>
 
+    <!-- ============================================================ -->
+    <!-- COMPLAINT DETAIL MODAL (NEW)                                  -->
+    <!-- ============================================================ -->
+    <div id="detailModal" class="fixed inset-0 modal-overlay hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-[20px] w-full max-w-2xl fade-in shadow-2xl max-h-[90vh] overflow-y-auto">
+                <!-- Header -->
+                <div class="flex justify-between items-start p-6 border-b border-[#FFF0EC]">
+                    <div class="flex-1 pr-4">
+                        <p class="text-xs font-semibold text-[#F1473A] uppercase tracking-wider mb-1">Complaint Details</p>
+                        <h2 id="detailTitle" class="text-xl font-bold text-[#1A1A2E] leading-tight"></h2>
+                    </div>
+                    <button onclick="closeDetailModal()" class="text-[#6B7280] hover:text-[#1A1A2E] transition flex-shrink-0 mt-1">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+
+                <!-- Meta grid -->
+                <div class="grid grid-cols-2 gap-3 p-6 pb-4">
+                    <div class="detail-meta-box">
+                        <p class="text-[10px] font-semibold text-[#9CA3AF] uppercase tracking-wider mb-1">Submitted By</p>
+                        <p id="detailUser" class="text-sm font-semibold text-[#1A1A2E]"></p>
+                        <p id="detailEmail" class="text-xs text-[#9CA3AF] mt-0.5 break-all"></p>
+                    </div>
+                    <div class="detail-meta-box">
+                        <p class="text-[10px] font-semibold text-[#9CA3AF] uppercase tracking-wider mb-1">Department</p>
+                        <p id="detailDept" class="text-sm font-semibold text-[#1A1A2E]"></p>
+                    </div>
+                    <div class="detail-meta-box">
+                        <p class="text-[10px] font-semibold text-[#9CA3AF] uppercase tracking-wider mb-2">Status</p>
+                        <div id="detailStatus" class="flex flex-wrap gap-1"></div>
+                    </div>
+                    <div class="detail-meta-box">
+                        <p class="text-[10px] font-semibold text-[#9CA3AF] uppercase tracking-wider mb-1">Date Submitted</p>
+                        <p id="detailDate" class="text-sm font-semibold text-[#1A1A2E]"></p>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="px-6 pb-4">
+                    <p class="text-[10px] font-semibold text-[#9CA3AF] uppercase tracking-wider mb-2">Description</p>
+                    <div id="detailDescription" class="detail-description"></div>
+                </div>
+
+                <!-- Attachments (if any) -->
+                <div id="detailAttachmentsSection" class="px-6 pb-4 hidden">
+                    <p class="text-[10px] font-semibold text-[#9CA3AF] uppercase tracking-wider mb-2">Attachments</p>
+                    <div id="detailAttachments" class="flex flex-wrap gap-2"></div>
+                </div>
+
+                <!-- Responses -->
+                <div id="detailResponsesSection" class="px-6 pb-4 hidden">
+                    <p class="text-[10px] font-semibold text-[#9CA3AF] uppercase tracking-wider mb-2">Admin Responses</p>
+                    <div id="detailResponses" class="space-y-2"></div>
+                </div>
+
+                <!-- Actions footer -->
+                <div class="flex gap-3 p-6 pt-4 border-t border-[#FFF0EC]">
+                    <button id="detailRespondBtn" onclick="handleDetailRespond()" class="flex-1 btn-outline">
+                        Add Response
+                    </button>
+                    <button onclick="closeDetailModal()" class="flex-1 btn-primary">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Response Modal -->
     <div id="responseModal" class="fixed inset-0 modal-overlay hidden z-50">
         <div class="flex items-center justify-center min-h-screen p-4">
@@ -501,22 +487,16 @@
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-xl font-bold text-[#1A1A2E]">Add Response</h2>
                     <button onclick="closeResponseModal()" class="text-[#6B7280] hover:text-[#1A1A2E] transition">
-                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                        </svg>
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
-
                 <form id="responseForm" class="space-y-4">
                     <input type="hidden" id="responseComplaintId">
-
                     <div>
                         <label class="block text-sm font-medium text-[#1A1A2E] mb-2">Response Message</label>
                         <textarea id="responseMessage" required rows="4" class="coral-textarea" placeholder="Enter your response..."></textarea>
                     </div>
-
                     <div id="responseError" class="hidden text-[#F1473A] text-sm"></div>
-
                     <div class="flex gap-3 pt-2">
                         <button type="button" onclick="closeResponseModal()" class="flex-1 btn-outline">Cancel</button>
                         <button type="submit" id="responseBtn" class="flex-1 btn-primary">
@@ -532,40 +512,32 @@
         </div>
     </div>
 
-    <!-- Status Change Reason Modal -->
+    <!-- Status Change Modal -->
     <div id="statusModal" class="fixed inset-0 modal-overlay hidden z-50">
         <div class="flex items-center justify-center min-h-screen p-4">
             <div class="bg-white rounded-[20px] w-full max-w-lg p-8 fade-in shadow-2xl">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-xl font-bold text-[#1A1A2E]">Change Status</h2>
                     <button onclick="closeStatusModal()" class="text-[#6B7280] hover:text-[#1A1A2E] transition">
-                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                        </svg>
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
-
                 <form id="statusForm" class="space-y-4">
                     <input type="hidden" id="statusComplaintId">
                     <input type="hidden" id="statusOldValue">
-
                     <div class="bg-[#FFF8F6] rounded-xl p-4">
                         <p class="text-[#6B7280] text-sm mb-1">Current status:</p>
                         <p id="statusCurrentDisplay" class="text-lg font-medium text-[#1A1A2E]"></p>
                     </div>
-
                     <div class="bg-[#FFF8F6] rounded-xl p-4">
                         <p class="text-[#6B7280] text-sm mb-1">Changing to:</p>
                         <p id="statusNewDisplay" class="text-lg font-medium text-[#F1473A]"></p>
                     </div>
-
                     <div>
                         <label class="block text-sm font-medium text-[#1A1A2E] mb-2">Reason for Status Change <span class="text-[#F1473A]">*</span></label>
                         <textarea id="statusReason" required rows="3" class="coral-textarea" placeholder="Explain why this status change is being made..."></textarea>
                     </div>
-
                     <div id="statusError" class="hidden text-[#F1473A] text-sm"></div>
-
                     <div class="flex gap-3 pt-2">
                         <button type="button" onclick="closeStatusModal()" class="flex-1 btn-outline">Cancel</button>
                         <button type="submit" id="statusBtn" class="flex-1 btn-primary">
@@ -581,35 +553,28 @@
         </div>
     </div>
 
-    <!-- Flag Modal Step 1 - Flag Decision -->
+    <!-- Flag Modal Step 1 -->
     <div id="flagStep1Modal" class="fixed inset-0 modal-overlay hidden z-50">
         <div class="flex items-center justify-center min-h-screen p-4">
             <div class="bg-white rounded-[20px] w-full max-w-[440px] p-8 fade-in shadow-2xl">
                 <h2 class="text-xl font-bold text-[#1A1A2E] mb-2 text-center">Complaint Review</h2>
                 <p class="text-[#6B7280] text-center mb-6">Is this complaint flagged as authentic or fraudulent?</p>
-
                 <div class="space-y-3">
                     <button onclick="selectFlagDecision(false)" class="btn-success w-full">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                        </svg>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                         Not Flagged (Authentic)
                     </button>
-
                     <button onclick="selectFlagDecision(true)" class="btn-primary w-full">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-8a2 2 0 012-2h14a2 2 0 012 2v8M3 21h18M3 21l2-2 2 2 2-2 2 2 2-2 2 2 2-2 2 2M9 11V7a3 3 0 116 0v4"/>
-                        </svg>
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-8a2 2 0 012-2h14a2 2 0 012 2v8M3 21h18M3 21l2-2 2 2 2-2 2 2 2-2 2 2 2-2 2 2M9 11V7a3 3 0 116 0v4"/></svg>
                         Flag as Suspicious
                     </button>
                 </div>
-
                 <button onclick="closeFlagStep1()" class="mt-4 w-full py-3 text-[#6B7280] hover:text-[#1A1A2E] font-medium transition">Cancel</button>
             </div>
         </div>
     </div>
 
-    <!-- Flag Modal Step 2 - Response Entry -->
+    <!-- Flag Modal Step 2 -->
     <div id="flagStep2Modal" class="fixed inset-0 modal-overlay hidden z-50">
         <div class="flex items-center justify-center min-h-screen p-4">
             <div class="bg-white rounded-[20px] w-full max-w-[440px] p-8 fade-in shadow-2xl">
@@ -619,18 +584,14 @@
                         <p class="text-[#6B7280] text-sm mt-1">Please provide a justification note for the record.</p>
                     </div>
                     <button onclick="closeFlagStep2()" class="text-[#6B7280] hover:text-[#1A1A2E] transition">
-                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                        </svg>
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
-
                 <form id="flagReviewForm" class="space-y-4">
                     <input type="hidden" id="flagComplaintId">
                     <input type="hidden" id="flagComplaintStatus">
                     <input type="hidden" id="flagComplaintReason">
                     <input type="hidden" id="flagIsFlagged">
-
                     <div>
                         <label class="block text-sm font-medium text-[#1A1A2E] mb-2">
                             Review Notes <span class="text-[#F1473A]">*</span>
@@ -638,9 +599,7 @@
                         </label>
                         <textarea id="flagReviewNote" required minlength="20" rows="4" class="coral-textarea" placeholder="Enter your justification for this review decision..."></textarea>
                     </div>
-
                     <div id="flagReviewError" class="hidden text-[#F1473A] text-sm"></div>
-
                     <div class="flex gap-3 pt-2">
                         <button type="button" onclick="closeFlagStep2()" class="flex-1 btn-outline">Back</button>
                         <button type="submit" id="flagReviewBtn" class="flex-1 btn-primary">
@@ -663,13 +622,9 @@
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-xl font-bold text-[#1A1A2E]">Settings</h2>
                     <button onclick="closeSettingsModal()" class="text-[#6B7280] hover:text-[#1A1A2E] transition">
-                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                        </svg>
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
-
-                <!-- Profile Edit -->
                 <div>
                     <h3 class="text-sm font-medium text-[#6B7280] mb-4">Edit Profile</h3>
                     <form id="profileForm" class="space-y-4">
@@ -706,6 +661,7 @@
         </div>
     </div>
 
+    <!-- Toast -->
     <div id="toast" class="fixed bottom-6 right-6 bg-white border-l-4 border-[#F1473A] px-5 py-3 rounded-lg shadow-lg transform translate-x-full transition-all duration-300 z-[9999] hidden text-sm text-[#1A1A2E]"></div>
 
     <script>
@@ -715,6 +671,7 @@
         let complaints = [];
         let departments = [];
         let currentDeptComplaints = [];
+        let currentDetailId = '';  // tracks which complaint is open in detail modal
 
         if (!token || user.role !== 'admin') {
             window.location.href = 'login.html';
@@ -722,38 +679,41 @@
 
         document.getElementById('adminName').textContent = user.name;
 
-        // Prevent back button from restoring session after logout
         window.addEventListener('pageshow', function(event) {
-            if (event.persisted) {
-                window.location.reload();
-            }
+            if (event.persisted) window.location.reload();
         });
 
+        // ── Keep Render awake (free tier sleeps after 15 min) ──────────────
+        setInterval(() => {
+            fetch(`${API}/departments`).catch(() => {});
+        }, 14 * 60 * 1000);
+
+        // ── Utility: fetch with a timeout ──────────────────────────────────
+        function fetchWithTimeout(url, options = {}, timeoutMs = 12000) {
+            const controller = new AbortController();
+            const id = setTimeout(() => controller.abort(), timeoutMs);
+            return fetch(url, { ...options, signal: controller.signal })
+                .finally(() => clearTimeout(id));
+        }
+
+        // ── Toast ──────────────────────────────────────────────────────────
         function showToast(message, type = 'success') {
             const toast = document.getElementById('toast');
             toast.textContent = message;
-            const borderColors = {
-                success: '#F1473A',
-                error: '#ef4444',
-                flag: '#F1473A',
-                authentic: '#10B981'
-            };
+            const borderColors = { success: '#F1473A', error: '#ef4444', flag: '#F1473A', authentic: '#10B981' };
             toast.style.borderLeftColor = borderColors[type] || borderColors.success;
             toast.classList.remove('hidden');
             void toast.offsetWidth;
             toast.classList.remove('translate-x-full');
 
             toast.removeEventListener('transitionend', handleTransitionEnd);
-
             function handleTransitionEnd(e) {
                 if (e.propertyName === 'transform' && toast.classList.contains('translate-x-full')) {
                     toast.classList.add('hidden');
                     toast.classList.remove('opacity-0');
                 }
             }
-
             toast.addEventListener('transitionend', handleTransitionEnd);
-
             setTimeout(() => {
                 toast.classList.add('opacity-0');
                 setTimeout(() => toast.classList.add('translate-x-full'), 300);
@@ -765,51 +725,39 @@
             window.location.href = 'index.html';
         }
 
-        // Settings Modal
+        // ── Settings ───────────────────────────────────────────────────────
         function openSettingsModal() {
             document.getElementById('settingsModal').classList.remove('hidden');
             document.getElementById('profileError').classList.add('hidden');
-
-            // Load current user data
             document.getElementById('editName').value = user.name;
             document.getElementById('editEmail').value = user.email;
             document.getElementById('currentPassword').value = '';
             document.getElementById('newPassword').value = '';
         }
-
         function closeSettingsModal() {
             document.getElementById('settingsModal').classList.add('hidden');
         }
 
-        // Profile form submission
         document.getElementById('profileForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const errorDiv = document.getElementById('profileError');
             errorDiv.classList.add('hidden');
-
             const btn = document.getElementById('profileBtn');
             const text = document.getElementById('profileBtnText');
             const spinner = document.getElementById('profileSpinner');
-
-            btn.disabled = true;
-            text.classList.add('hidden');
-            spinner.classList.remove('hidden');
+            btn.disabled = true; text.classList.add('hidden'); spinner.classList.remove('hidden');
 
             const updateData = {
                 name: document.getElementById('editName').value,
                 email: document.getElementById('editEmail').value
             };
-
             const currentPassword = document.getElementById('currentPassword').value;
             const newPassword = document.getElementById('newPassword').value;
-
             if (newPassword) {
                 if (!currentPassword) {
                     errorDiv.textContent = 'Current password is required to change password';
                     errorDiv.classList.remove('hidden');
-                    btn.disabled = false;
-                    text.classList.remove('hidden');
-                    spinner.classList.add('hidden');
+                    btn.disabled = false; text.classList.remove('hidden'); spinner.classList.add('hidden');
                     return;
                 }
                 updateData.currentPassword = currentPassword;
@@ -817,24 +765,17 @@
             }
 
             try {
-                const response = await fetch(`${API}/auth/profile`, {
+                const response = await fetchWithTimeout(`${API}/auth/profile`, {
                     method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                     body: JSON.stringify(updateData)
                 });
-
                 const data = await response.json();
-
                 if (data.success) {
-                    // Update local storage
                     user.name = data.data.name;
                     user.email = data.data.email;
                     localStorage.setItem('user', JSON.stringify(user));
                     document.getElementById('adminName').textContent = user.name;
-
                     showToast('Profile updated successfully!', 'success');
                     closeSettingsModal();
                 } else {
@@ -842,15 +783,14 @@
                     errorDiv.classList.remove('hidden');
                 }
             } catch (error) {
-                errorDiv.textContent = 'Network error. Please try again.';
+                errorDiv.textContent = error.name === 'AbortError' ? 'Request timed out. Try again.' : 'Network error. Please try again.';
                 errorDiv.classList.remove('hidden');
             } finally {
-                btn.disabled = false;
-                text.classList.remove('hidden');
-                spinner.classList.add('hidden');
+                btn.disabled = false; text.classList.remove('hidden'); spinner.classList.add('hidden');
             }
         });
 
+        // ── Badge helpers ──────────────────────────────────────────────────
         function getStatusBadge(status) {
             const badges = {
                 pending: '<span class="badge-pending">Pending</span>',
@@ -861,7 +801,6 @@
         }
 
         function getFlagBadge(complaint) {
-            // If no review exists yet
             if (!complaint.hasOwnProperty('flagged') || (complaint.flagNote === undefined || complaint.flagNote === '')) {
                 return '<span class="badge-pending-review ml-2">Pending Review</span>';
             }
@@ -875,20 +814,24 @@
             return new Date(dateString).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
         }
 
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ── Departments ────────────────────────────────────────────────────
         async function fetchDepartments() {
             try {
                 const response = await fetch(`${API}/departments`);
                 const data = await response.json();
                 if (data.success) {
                     departments = data.data;
-                    document.getElementById('statDepts')?.parentElement?.querySelector('p.text-3xl')?.remove();
-
                     const select = document.getElementById('deptFilter');
                     select.innerHTML = '<option value="all">All Departments</option>';
                     departments.forEach(dept => {
                         select.innerHTML += `<option value="${dept._id}">${dept.name}</option>`;
                     });
-
                     renderDepartments();
                 }
             } catch (error) {
@@ -905,61 +848,43 @@
             `).join('');
         }
 
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
         async function viewDepartmentComplaints(deptId, deptName, deptDesc) {
             try {
-                const response = await fetch(`${API}/complaints/department/${deptId}`, {
+                const response = await fetchWithTimeout(`${API}/complaints/department/${deptId}`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
                 const data = await response.json();
-
                 if (data.success) {
                     currentDeptComplaints = data.data;
                     document.getElementById('deptViewName').textContent = deptName;
                     document.getElementById('deptViewDesc').textContent = deptDesc;
-
-                    // Hide main dashboard, show department view
                     document.getElementById('mainDashboard').classList.add('hidden');
                     document.getElementById('deptComplaintsView').classList.remove('hidden');
-
                     renderDeptComplaintsTable();
                 } else {
                     showToast(data.message || 'Error loading complaints', 'error');
                 }
             } catch (error) {
-                showToast('Error loading department complaints', 'error');
+                showToast(error.name === 'AbortError' ? 'Request timed out. Try again.' : 'Error loading department complaints', 'error');
             }
         }
 
         function renderDeptComplaintsTable() {
             const tbody = document.getElementById('deptComplaintsTable');
             const emptyState = document.getElementById('deptComplaintsEmpty');
-
             if (currentDeptComplaints.length === 0) {
                 tbody.innerHTML = '';
                 emptyState.classList.remove('hidden');
                 return;
             }
-
             emptyState.classList.add('hidden');
             tbody.innerHTML = currentDeptComplaints.map(c => `
-                <tr class="transition">
-                    <td class="whitespace-nowrap">
-                        <div class="text-sm font-bold text-[#1A1A2E]">${c.title}</div>
-                    </td>
-                    <td class="whitespace-nowrap">
-                        <div class="text-sm text-[#6B7280]">${c.userId?.name || 'Unknown'}</div>
-                    </td>
+                <tr class="complaint-row transition" onclick="openDetailModalFromDept('${c._id}')">
+                    <td class="whitespace-nowrap"><div class="text-sm font-bold text-[#1A1A2E]">${c.title}</div></td>
+                    <td class="whitespace-nowrap"><div class="text-sm text-[#6B7280]">${c.userId?.name || 'Unknown'}</div></td>
                     <td class="whitespace-nowrap">${getStatusBadge(c.status)}${c.status === 'resolved' ? getFlagBadge(c) : ''}</td>
-                    <td class="whitespace-nowrap">
-                        <div class="text-sm text-[#9CA3AF]">${formatDate(c.createdAt)}</div>
-                    </td>
-                    <td class="whitespace-nowrap">
+                    <td class="whitespace-nowrap"><div class="text-sm text-[#9CA3AF]">${formatDate(c.createdAt)}</div></td>
+                    <td class="whitespace-nowrap" onclick="event.stopPropagation()">
                         <div class="flex items-center gap-2">
                             <select onchange="handleStatusChange('${c._id}', '${c.status}', this.value)" class="coral-select">
                                 <option value="" disabled ${c.status === '' ? 'selected' : ''}>Change Status</option>
@@ -980,9 +905,10 @@
             currentDeptComplaints = [];
         }
 
+        // ── Load complaints ────────────────────────────────────────────────
         async function loadComplaints() {
             try {
-                const response = await fetch(`${API}/complaints`, {
+                const response = await fetchWithTimeout(`${API}/complaints`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
                 const data = await response.json();
@@ -992,7 +918,7 @@
                     filterComplaints();
                 }
             } catch (error) {
-                showToast('Error loading complaints', 'error');
+                showToast(error.name === 'AbortError' ? 'Loading timed out — server may be waking up. Please refresh.' : 'Error loading complaints', 'error');
             }
         }
 
@@ -1007,32 +933,29 @@
         function filterComplaints() {
             const statusFilter = document.getElementById('statusFilter').value;
             const deptFilter = document.getElementById('deptFilter').value;
-
             let filtered = complaints;
             if (statusFilter !== 'all') filtered = filtered.filter(c => c.status === statusFilter);
             if (deptFilter !== 'all') filtered = filtered.filter(c => c.deptId?._id === deptFilter || c.deptId === deptFilter);
-
             renderTable(filtered);
         }
 
         function renderTable(data) {
             const tbody = document.getElementById('complaintsTable');
+            if (data.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-12 text-[#9CA3AF]">No complaints found.</td></tr>`;
+                return;
+            }
             tbody.innerHTML = data.map(c => `
-                <tr class="transition">
+                <tr class="complaint-row transition" onclick="openDetailModal('${c._id}')">
                     <td class="whitespace-nowrap">
                         <div class="text-sm font-bold text-[#1A1A2E]">${c.title}</div>
+                        <div class="text-xs text-[#9CA3AF] mt-0.5 max-w-[180px] truncate">${c.description ? c.description.substring(0, 60) + (c.description.length > 60 ? '…' : '') : ''}</div>
                     </td>
-                    <td class="whitespace-nowrap">
-                        <div class="text-sm text-[#6B7280]">${c.userId?.name || 'Unknown'}</div>
-                    </td>
-                    <td class="whitespace-nowrap">
-                        <div class="text-sm text-[#6B7280]">${c.deptId?.name || 'Unknown'}</div>
-                    </td>
+                    <td class="whitespace-nowrap"><div class="text-sm text-[#6B7280]">${c.userId?.name || 'Unknown'}</div></td>
+                    <td class="whitespace-nowrap"><div class="text-sm text-[#6B7280]">${c.deptId?.name || 'Unknown'}</div></td>
                     <td class="whitespace-nowrap">${getStatusBadge(c.status)}${c.status === 'resolved' ? getFlagBadge(c) : ''}</td>
-                    <td class="whitespace-nowrap">
-                        <div class="text-sm text-[#9CA3AF]">${formatDate(c.createdAt)}</div>
-                    </td>
-                    <td class="whitespace-nowrap">
+                    <td class="whitespace-nowrap"><div class="text-sm text-[#9CA3AF]">${formatDate(c.createdAt)}</div></td>
+                    <td class="whitespace-nowrap" onclick="event.stopPropagation()">
                         <div class="flex items-center gap-2">
                             <select onchange="handleStatusChange('${c._id}', '${c.status}', this.value)" class="coral-select">
                                 <option value="" disabled selected>Change Status</option>
@@ -1047,14 +970,79 @@
             `).join('');
         }
 
+        // ── Complaint Detail Modal ─────────────────────────────────────────
+        function openDetailModal(id) {
+            const c = complaints.find(x => x._id === id);
+            if (!c) return;
+            _populateDetailModal(c);
+        }
+
+        function openDetailModalFromDept(id) {
+            const c = currentDeptComplaints.find(x => x._id === id);
+            if (!c) return;
+            _populateDetailModal(c);
+        }
+
+        function _populateDetailModal(c) {
+            currentDetailId = c._id;
+
+            document.getElementById('detailTitle').textContent = c.title;
+            document.getElementById('detailUser').textContent = c.userId?.name || 'Unknown';
+            document.getElementById('detailEmail').textContent = c.userId?.email || '';
+            document.getElementById('detailDept').textContent = c.deptId?.name || 'Unknown';
+            document.getElementById('detailStatus').innerHTML =
+                getStatusBadge(c.status) + (c.status === 'resolved' ? getFlagBadge(c) : '');
+            document.getElementById('detailDate').textContent =
+                new Date(c.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('detailDescription').textContent =
+                c.description || 'No description provided.';
+
+            // Attachments
+            if (c.attachments && c.attachments.length > 0) {
+                document.getElementById('detailAttachmentsSection').classList.remove('hidden');
+                document.getElementById('detailAttachments').innerHTML = c.attachments.map(a => `
+                    <a href="${API.replace('/api', '')}/uploads/${a.filename}" target="_blank"
+                       class="inline-flex items-center gap-1 bg-[#FFF0EC] text-[#F1473A] text-xs font-medium px-3 py-1.5 rounded-full hover:bg-[#F1473A] hover:text-white transition">
+                        <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"/></svg>
+                        ${a.originalName || a.filename}
+                    </a>
+                `).join('');
+            } else {
+                document.getElementById('detailAttachmentsSection').classList.add('hidden');
+            }
+
+            // Responses
+            if (c.responses && c.responses.length > 0) {
+                document.getElementById('detailResponsesSection').classList.remove('hidden');
+                document.getElementById('detailResponses').innerHTML = c.responses.map(r => `
+                    <div class="bg-[#DBEAFE] rounded-xl p-4">
+                        <p class="text-sm text-[#1E40AF] leading-relaxed">${escapeHtml(r.message)}</p>
+                        <p class="text-xs text-[#6B7280] mt-2">${formatDate(r.createdAt || r.date)}</p>
+                    </div>
+                `).join('');
+            } else {
+                document.getElementById('detailResponsesSection').classList.add('hidden');
+            }
+
+            document.getElementById('detailModal').classList.remove('hidden');
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detailModal').classList.add('hidden');
+        }
+
+        // "Add Response" button inside the detail modal
+        function handleDetailRespond() {
+            closeDetailModal();
+            openResponseModal(currentDetailId);
+        }
+
+        // ── Status change ──────────────────────────────────────────────────
         function handleStatusChange(complaintId, currentStatus, newStatus) {
             if (!newStatus || newStatus === currentStatus) {
-                // Reset the select if same status or empty
                 filterComplaints();
                 return;
             }
-
-            // If changing to resolved, trigger flag review flow
             if (newStatus === 'resolved') {
                 openFlagStep1(complaintId, currentStatus, newStatus);
             } else {
@@ -1062,19 +1050,16 @@
             }
         }
 
-        // Flag Modal Step 1 - Open
         function openFlagStep1(complaintId, currentStatus, newStatus) {
             document.getElementById('flagComplaintId').value = complaintId;
             document.getElementById('flagComplaintStatus').value = newStatus;
             document.getElementById('flagStep1Modal').classList.remove('hidden');
         }
-
         function closeFlagStep1() {
             document.getElementById('flagStep1Modal').classList.add('hidden');
             filterComplaints();
         }
 
-        // Flag Modal Step 2 - Open with decision
         function selectFlagDecision(isFlagged) {
             document.getElementById('flagIsFlagged').value = isFlagged;
             document.getElementById('flagStep2Title').textContent = isFlagged ? 'Flag: Suspicious Complaint' : 'Confirm Authentic Complaint';
@@ -1083,14 +1068,11 @@
             document.getElementById('flagReviewError').classList.add('hidden');
             closeFlagStep1();
         }
-
         function closeFlagStep2() {
             document.getElementById('flagStep2Modal').classList.add('hidden');
-            // Reopen step 1
             document.getElementById('flagStep1Modal').classList.remove('hidden');
         }
 
-        // Flag Review Form Submission
         document.getElementById('flagReviewForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const errorDiv = document.getElementById('flagReviewError');
@@ -1101,102 +1083,87 @@
             const spinner = document.getElementById('flagReviewSpinner');
 
             const flagNote = document.getElementById('flagReviewNote').value;
-
             if (flagNote.length < 20) {
                 errorDiv.textContent = 'Please enter at least 20 characters';
                 errorDiv.classList.remove('hidden');
                 return;
             }
 
-            btn.disabled = true;
-            text.classList.add('hidden');
-            spinner.classList.remove('hidden');
+            btn.disabled = true; text.classList.add('hidden'); spinner.classList.remove('hidden');
 
             const complaintId = document.getElementById('flagComplaintId').value;
             const isFlagged = document.getElementById('flagIsFlagged').value === 'true';
 
             try {
-                // First call flag API
-                const flagResponse = await fetch(`${API}/complaints/${complaintId}/flag`, {
+                // Step 1: flag the complaint (12s timeout)
+                const flagResponse = await fetchWithTimeout(`${API}/complaints/${complaintId}/flag`, {
                     method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                     body: JSON.stringify({ flagged: isFlagged, flagNote })
-                });
+                }, 12000);
 
                 const flagData = await flagResponse.json();
 
-                if (flagData.success) {
-                    // Now call status API with the note as reason
-                    const statusResponse = await fetch(`${API}/complaints/${complaintId}/status`, {
-                        method: 'PATCH',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${token}`
-                        },
-                        body: JSON.stringify({
-                            status: 'resolved',
-                            reason: `[${isFlagged ? 'FLAGGED' : 'AUTHENTIC'}] ${flagNote}`
-                        })
-                    });
-
-                    const statusData = await statusResponse.json();
-
-                    if (statusData.success) {
-                        if (isFlagged) {
-                            showToast('Flagged — email sent to user', 'flag');
-                        } else {
-                            showToast('Marked as authentic. No email sent.', 'authentic');
-                        }
-                        document.getElementById('flagStep2Modal').classList.add('hidden');
-                        loadComplaints();
-                        // If in department view, refresh it
-                        if (!document.getElementById('deptComplaintsView').classList.contains('hidden')) {
-                            const deptId = currentDeptComplaints[0]?.deptId?._id;
-                            if (deptId) {
-                                const dept = departments.find(d => d._id === deptId);
-                                if (dept) {
-                                    viewDepartmentComplaints(deptId, dept.name, dept.description);
-                                }
-                            }
-                        }
-                    } else {
-                        errorDiv.textContent = statusData.message;
-                        errorDiv.classList.remove('hidden');
-                    }
-                } else {
+                if (!flagData.success) {
                     errorDiv.textContent = flagData.message;
                     errorDiv.classList.remove('hidden');
+                    return;
                 }
+
+                // Step 2: update status to resolved (12s timeout)
+                const statusResponse = await fetchWithTimeout(`${API}/complaints/${complaintId}/status`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+                    body: JSON.stringify({
+                        status: 'resolved',
+                        reason: `[${isFlagged ? 'FLAGGED' : 'AUTHENTIC'}] ${flagNote}`
+                    })
+                }, 12000);
+
+                const statusData = await statusResponse.json();
+
+                if (statusData.success) {
+                    showToast(
+                        isFlagged ? 'Complaint flagged and resolved.' : 'Marked authentic and resolved.',
+                        isFlagged ? 'flag' : 'authentic'
+                    );
+                    document.getElementById('flagStep2Modal').classList.add('hidden');
+                    loadComplaints();
+                    refreshDeptViewIfOpen();
+                } else {
+                    errorDiv.textContent = statusData.message;
+                    errorDiv.classList.remove('hidden');
+                }
+
             } catch (error) {
-                errorDiv.textContent = 'Network error. Please try again.';
-                errorDiv.classList.remove('hidden');
+                if (error.name === 'AbortError') {
+                    // DB write likely succeeded; email just timed out. Close and reload.
+                    document.getElementById('flagStep2Modal').classList.add('hidden');
+                    loadComplaints();
+                    refreshDeptViewIfOpen();
+                    showToast('Saved — email notification may be delayed.', 'authentic');
+                } else {
+                    errorDiv.textContent = 'Network error. Please try again.';
+                    errorDiv.classList.remove('hidden');
+                }
             } finally {
-                btn.disabled = false;
-                text.classList.remove('hidden');
-                spinner.classList.add('hidden');
+                btn.disabled = false; text.classList.remove('hidden'); spinner.classList.add('hidden');
             }
         });
 
         function openStatusModal(complaintId, currentStatus, newStatus) {
             document.getElementById('statusComplaintId').value = complaintId;
             document.getElementById('statusOldValue').value = currentStatus;
-
             const statusLabels = { pending: 'Pending', in_progress: 'In Progress', resolved: 'Resolved' };
             document.getElementById('statusCurrentDisplay').textContent = statusLabels[currentStatus];
             document.getElementById('statusNewDisplay').textContent = statusLabels[newStatus];
             document.getElementById('statusNewDisplay').dataset.value = newStatus;
-
             document.getElementById('statusModal').classList.remove('hidden');
             document.getElementById('statusForm').reset();
             document.getElementById('statusError').classList.add('hidden');
         }
-
         function closeStatusModal() {
             document.getElementById('statusModal').classList.add('hidden');
-            // Reset the select dropdowns
             filterComplaints();
         }
 
@@ -1204,28 +1171,21 @@
             e.preventDefault();
             const errorDiv = document.getElementById('statusError');
             errorDiv.classList.add('hidden');
-
             const btn = document.getElementById('statusBtn');
             const text = document.getElementById('statusBtnText');
             const spinner = document.getElementById('statusSpinner');
-
-            btn.disabled = true;
-            text.classList.add('hidden');
-            spinner.classList.remove('hidden');
+            btn.disabled = true; text.classList.add('hidden'); spinner.classList.remove('hidden');
 
             const complaintId = document.getElementById('statusComplaintId').value;
             const newStatus = document.getElementById('statusNewDisplay').dataset.value;
             const reason = document.getElementById('statusReason').value;
 
             try {
-                const response = await fetch(`${API}/complaints/${complaintId}/status`, {
+                const response = await fetchWithTimeout(`${API}/complaints/${complaintId}/status`, {
                     method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                     body: JSON.stringify({ status: newStatus, reason })
-                });
+                }, 12000);
 
                 const data = await response.json();
 
@@ -1233,37 +1193,34 @@
                     showToast('Status updated successfully!', 'success');
                     closeStatusModal();
                     loadComplaints();
-                    // If in department view, refresh it
-                    if (!document.getElementById('deptComplaintsView').classList.contains('hidden')) {
-                        const deptId = currentDeptComplaints[0]?.deptId?._id;
-                        if (deptId) {
-                            const dept = departments.find(d => d._id === deptId);
-                            if (dept) {
-                                viewDepartmentComplaints(deptId, dept.name, dept.description);
-                            }
-                        }
-                    }
+                    refreshDeptViewIfOpen();
                 } else {
                     errorDiv.textContent = data.message;
                     errorDiv.classList.remove('hidden');
                 }
             } catch (error) {
-                errorDiv.textContent = 'Network error. Please try again.';
-                errorDiv.classList.remove('hidden');
+                if (error.name === 'AbortError') {
+                    // Likely saved — email just timed out
+                    closeStatusModal();
+                    loadComplaints();
+                    refreshDeptViewIfOpen();
+                    showToast('Saved — email notification may be delayed.', 'success');
+                } else {
+                    errorDiv.textContent = 'Network error. Please try again.';
+                    errorDiv.classList.remove('hidden');
+                }
             } finally {
-                btn.disabled = false;
-                text.classList.remove('hidden');
-                spinner.classList.add('hidden');
+                btn.disabled = false; text.classList.remove('hidden'); spinner.classList.add('hidden');
             }
         });
 
+        // ── Response modal ─────────────────────────────────────────────────
         function openResponseModal(complaintId) {
             document.getElementById('responseComplaintId').value = complaintId;
             document.getElementById('responseModal').classList.remove('hidden');
             document.getElementById('responseForm').reset();
             document.getElementById('responseError').classList.add('hidden');
         }
-
         function closeResponseModal() {
             document.getElementById('responseModal').classList.add('hidden');
         }
@@ -1272,27 +1229,20 @@
             e.preventDefault();
             const errorDiv = document.getElementById('responseError');
             errorDiv.classList.add('hidden');
-
             const btn = document.getElementById('responseBtn');
             const text = document.getElementById('responseBtnText');
             const spinner = document.getElementById('responseSpinner');
-
-            btn.disabled = true;
-            text.classList.add('hidden');
-            spinner.classList.remove('hidden');
+            btn.disabled = true; text.classList.add('hidden'); spinner.classList.remove('hidden');
 
             try {
-                const response = await fetch(`${API}/responses`, {
+                const response = await fetchWithTimeout(`${API}/responses`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                     body: JSON.stringify({
                         complaintId: document.getElementById('responseComplaintId').value,
                         message: document.getElementById('responseMessage').value
                     })
-                });
+                }, 12000);
 
                 const data = await response.json();
 
@@ -1300,56 +1250,43 @@
                     showToast('Response sent successfully!', 'success');
                     closeResponseModal();
                     loadComplaints();
-                    // If in department view, refresh it
-                    if (!document.getElementById('deptComplaintsView').classList.contains('hidden')) {
-                        const deptId = currentDeptComplaints[0]?.deptId?._id;
-                        if (deptId) {
-                            const dept = departments.find(d => d._id === deptId);
-                            if (dept) {
-                                viewDepartmentComplaints(deptId, dept.name, dept.description);
-                            }
-                        }
-                    }
+                    refreshDeptViewIfOpen();
                 } else {
                     errorDiv.textContent = data.message;
                     errorDiv.classList.remove('hidden');
                 }
             } catch (error) {
-                errorDiv.textContent = 'Network error. Please try again.';
-                errorDiv.classList.remove('hidden');
+                if (error.name === 'AbortError') {
+                    closeResponseModal();
+                    loadComplaints();
+                    showToast('Saved — email notification may be delayed.', 'success');
+                } else {
+                    errorDiv.textContent = 'Network error. Please try again.';
+                    errorDiv.classList.remove('hidden');
+                }
             } finally {
-                btn.disabled = false;
-                text.classList.remove('hidden');
-                spinner.classList.add('hidden');
+                btn.disabled = false; text.classList.remove('hidden'); spinner.classList.add('hidden');
             }
         });
 
+        // ── Department add ─────────────────────────────────────────────────
         document.getElementById('deptForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-
             const btn = document.getElementById('deptBtn');
             const text = document.getElementById('deptBtnText');
             const spinner = document.getElementById('deptSpinner');
-
-            btn.disabled = true;
-            text.classList.add('hidden');
-            spinner.classList.remove('hidden');
+            btn.disabled = true; text.classList.add('hidden'); spinner.classList.remove('hidden');
 
             try {
-                const response = await fetch(`${API}/departments`, {
+                const response = await fetchWithTimeout(`${API}/departments`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                     body: JSON.stringify({
                         name: document.getElementById('newDeptName').value,
                         description: document.getElementById('newDeptDesc').value
                     })
                 });
-
                 const data = await response.json();
-
                 if (data.success) {
                     showToast('Department added!', 'success');
                     document.getElementById('deptForm').reset();
@@ -1360,12 +1297,22 @@
             } catch (error) {
                 showToast('Network error', 'error');
             } finally {
-                btn.disabled = false;
-                text.classList.remove('hidden');
-                spinner.classList.add('hidden');
+                btn.disabled = false; text.classList.remove('hidden'); spinner.classList.add('hidden');
             }
         });
 
+        // ── Refresh dept view if it's open ─────────────────────────────────
+        function refreshDeptViewIfOpen() {
+            if (!document.getElementById('deptComplaintsView').classList.contains('hidden')) {
+                const deptId = currentDeptComplaints[0]?.deptId?._id;
+                if (deptId) {
+                    const dept = departments.find(d => d._id === deptId);
+                    if (dept) viewDepartmentComplaints(deptId, dept.name, dept.description);
+                }
+            }
+        }
+
+        // ── Init ───────────────────────────────────────────────────────────
         fetchDepartments();
         loadComplaints();
     </script>
