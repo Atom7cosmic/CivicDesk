@@ -5,6 +5,20 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const { authMiddleware } = require('../middleware/authMiddleware');
 
+// Safe bcrypt compare: rejects oversized passwords instantly,
+// and has a hard 10s timeout so slow cloud CPUs never hang a request
+function safeCompare(plaintext, hash) {
+  if (!plaintext || plaintext.length > 72) {
+    return Promise.resolve(false);
+  }
+  const comparePromise = bcrypt.compare(plaintext, hash);
+  const timeoutPromise = new Promise((_, reject) =>
+    setTimeout(() => reject(new Error('bcrypt timeout')), 10000)
+  );
+  return Promise.race([comparePromise, timeoutPromise]);
+}
+
+// POST /api/auth/register
 router.post('/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -12,9 +26,11 @@ router.post('/register', async (req, res) => {
     if (!name || !email || !password) {
       return res.status(400).json({ success: false, message: 'Please provide all required fields' });
     }
-
     if (password.length < 6) {
       return res.status(400).json({ success: false, message: 'Password must be at least 6 characters' });
+    }
+    if (password.length > 72) {
+      return res.status(400).json({ success: false, message: 'Password must be 72 characters or fewer' });
     }
 
     const existingUser = await User.findOne({ email });
@@ -35,12 +51,7 @@ router.post('/register', async (req, res) => {
       success: true,
       data: {
         token,
-        user: {
-          _id: user._id,
-          name: user.name,
-          email: user.email,
-          role: user.role
-        }
+        user: { _id: user._id, name: user.name, email: user.email, role: user.role }
       }
     });
   } catch (error) {
@@ -48,6 +59,7 @@ router.post('/register', async (req, res) => {
   }
 });
 
+// POST /api/auth/login
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -56,12 +68,25 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ success: false, message: 'Please provide email and password' });
     }
 
+    // ✅ Reject oversized passwords before ANY db or bcrypt work
+    if (password.length > 72) {
+      return res.status(400).json({ success: false, message: 'Invalid credentials' });
+    }
+
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ success: false, message: 'Invalid credentials' });
     }
 
-    const isMatch = await user.comparePassword(password);
+    // ✅ Use safeCompare instead of user.comparePassword()
+    let isMatch;
+    try {
+      isMatch = await safeCompare(password, user.password);
+    } catch (bcryptErr) {
+      console.error('bcrypt timeout on login:', bcryptErr.message);
+      return res.status(500).json({ success: false, message: 'Login timed out. Please try again.' });
+    }
+
     if (!isMatch) {
       return res.status(400).json({ success: false, message: 'Invalid credentials' });
     }
@@ -76,12 +101,7 @@ router.post('/login', async (req, res) => {
       success: true,
       data: {
         token,
-        user: {
-          _id: user._id,
-          name: user.name,
-          email: user.email,
-          role: user.role
-        }
+        user: { _id: user._id, name: user.name, email: user.email, role: user.role }
       }
     });
   } catch (error) {
@@ -89,6 +109,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// GET /api/auth/profile
 router.get('/profile', authMiddleware, async (req, res) => {
   try {
     const user = await User.findById(req.user.userId).select('-password');
@@ -101,6 +122,7 @@ router.get('/profile', authMiddleware, async (req, res) => {
   }
 });
 
+// PATCH /api/auth/profile
 router.patch('/profile', authMiddleware, async (req, res) => {
   try {
     const { name, email, currentPassword, newPassword } = req.body;
@@ -110,10 +132,8 @@ router.patch('/profile', authMiddleware, async (req, res) => {
       return res.status(404).json({ success: false, message: 'User not found' });
     }
 
-    // Update name
     if (name) user.name = name;
 
-    // Update email
     if (email && email !== user.email) {
       const existingUser = await User.findOne({ email });
       if (existingUser) {
@@ -122,17 +142,27 @@ router.patch('/profile', authMiddleware, async (req, res) => {
       user.email = email;
     }
 
-    // Update password
     if (newPassword) {
       if (!currentPassword) {
         return res.status(400).json({ success: false, message: 'Current password required' });
       }
-      const isMatch = await user.comparePassword(currentPassword);
-      if (!isMatch) {
-        return res.status(400).json({ success: false, message: 'Current password is incorrect' });
-      }
       if (newPassword.length < 6) {
         return res.status(400).json({ success: false, message: 'Password must be at least 6 characters' });
+      }
+      if (newPassword.length > 72) {
+        return res.status(400).json({ success: false, message: 'Password must be 72 characters or fewer' });
+      }
+
+      // ✅ Use safeCompare instead of user.comparePassword()
+      let isMatch;
+      try {
+        isMatch = await safeCompare(currentPassword, user.password);
+      } catch (err) {
+        return res.status(500).json({ success: false, message: 'Password check timed out. Please try again.' });
+      }
+
+      if (!isMatch) {
+        return res.status(400).json({ success: false, message: 'Current password is incorrect' });
       }
       user.password = newPassword;
     }
@@ -141,12 +171,7 @@ router.patch('/profile', authMiddleware, async (req, res) => {
 
     res.json({
       success: true,
-      data: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        role: user.role
-      }
+      data: { _id: user._id, name: user.name, email: user.email, role: user.role }
     });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
