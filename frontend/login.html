@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CivicDesk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', system-ui, sans-serif; }
+
+        /* Floating cards animation */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float-card {
+            animation: fadeInUp 0.8s ease-out forwards, float 4s ease-in-out infinite;
+        }
+
+        .float-card:nth-child(1) { animation-delay: 0s, 0s; }
+        .float-card:nth-child(2) { animation-delay: 0.2s, 0.5s; }
+        .float-card:nth-child(3) { animation-delay: 0.4s, 1s; }
+
+        /* Input focus styles */
+        .coral-input {
+            background: #FFF8F6;
+            border: 1.5px solid #F0E0DC;
+            border-radius: 12px;
+            padding: 14px 16px;
+            transition: all 0.2s ease;
+        }
+
+        .coral-input:focus {
+            outline: none;
+            border-color: #F1473A;
+            box-shadow: 0 0 0 3px rgba(241, 71, 58, 0.1);
+        }
+
+        /* Button hover/active */
+        .coral-btn {
+            background: #F1473A;
+            border-radius: 50px;
+            padding: 16px;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+
+        .coral-btn:hover {
+            background: #D63B2F;
+            transform: scale(1.01);
+        }
+
+        .coral-btn:active {
+            transform: scale(0.99);
+        }
+
+        /* Tab styles */
+        .tab-btn {
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-active {
+            background: #F1473A;
+            color: white;
+        }
+
+        .tab-inactive {
+            background: transparent;
+            color: #6B7280;
+        }
+
+        .tab-inactive:hover {
+            color: #1A1A2E;
+        }
+    </style>
+</head>
+<body class="bg-white min-h-screen">
+    <div class="min-h-screen flex">
+        <!-- Left Panel - Decorative -->
+        <div class="hidden lg:flex lg:w-1/2 relative overflow-hidden" style="background: linear-gradient(135deg, #F1473A 0%, #FF6B5A 50%, #FFB5A7 100%);">
+            <div class="relative z-10 flex flex-col justify-center px-16 w-full">
+                <!-- Logo -->
+                <div class="mb-8">
+                    <h1 class="text-5xl font-bold text-white tracking-tight">CivicDesk</h1>
+                </div>
+
+                <!-- Tagline -->
+                <p class="text-2xl font-bold text-white/95 mb-12 leading-relaxed">
+                    One platform.<br>Every complaint resolved.
+                </p>
+
+                <!-- Floating Cards -->
+                <div class="space-y-4 relative">
+                    <!-- Card 1 - Resolved -->
+                    <div class="float-card bg-white rounded-xl p-4 shadow-lg max-w-[260px]" style="margin-left: 0;">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold text-green-600">Resolved</p>
+                                <p class="text-sm font-medium text-gray-800">Street Light Repair</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 - In Progress -->
+                    <div class="float-card bg-white rounded-xl p-4 shadow-lg max-w-[260px]" style="margin-left: 40px;">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold text-amber-600">In Progress</p>
+                                <p class="text-sm font-medium text-gray-800">Water Supply Issue</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 - Departments -->
+                    <div class="float-card bg-white rounded-xl p-4 shadow-lg max-w-[260px]" style="margin-left: 20px;">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-coral-100 rounded-full flex items-center justify-center" style="background: rgba(241, 71, 58, 0.1);">
+                                <svg class="w-4 h-4 text-[#F1473A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-800">12 Departments Active</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decorative circles -->
+            <div class="absolute -top-20 -right-20 w-80 h-80 bg-white/10 rounded-full"></div>
+            <div class="absolute -bottom-40 -left-20 w-96 h-96 bg-white/5 rounded-full"></div>
+        </div>
+
+        <!-- Right Panel - Form -->
+        <div class="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12">
+            <div class="w-full max-w-md">
+                <!-- Small Logo -->
+                <div class="flex justify-center mb-8">
+                    <div class="w-12 h-12 bg-[#F1473A] rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">CD</span>
+                    </div>
+                </div>
+
+                <!-- Heading -->
+                <div class="text-center mb-8">
+                    <h2 class="text-[32px] font-bold text-[#1A1A2E] mb-2">Welcome back</h2>
+                    <p class="text-[#6B7280] text-base">Sign in to your account</p>
+                </div>
+
+                <!-- Tab Switcher -->
+                <div class="flex justify-center mb-8">
+                    <div class="inline-flex bg-gray-100 rounded-full p-1">
+                        <button id="loginTab" class="tab-btn tab-active" onclick="switchToLogin()">Login</button>
+                        <button id="registerTab" class="tab-btn tab-inactive" onclick="switchToRegister()">Register</button>
+                    </div>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" class="space-y-5">
+                    <div>
+                        <label class="block text-[13px] font-medium text-[#6B7280] mb-1.5">Email</label>
+                        <input type="email" id="loginEmail" required class="coral-input w-full text-[#1A1A2E]" placeholder="Enter your email">
+                    </div>
+                    <div>
+                        <label class="block text-[13px] font-medium text-[#6B7280] mb-1.5">Password</label>
+                        <input type="password" id="loginPassword" required class="coral-input w-full text-[#1A1A2E]" placeholder="Enter your password">
+                    </div>
+                    <div id="loginError" class="hidden text-[#F1473A] text-sm"></div>
+                    <button type="submit" id="loginBtn" class="coral-btn w-full text-white flex items-center justify-center gap-2">
+                        <span id="loginBtnText">Sign In</span>
+                        <svg id="loginSpinner" class="hidden w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="registerForm" class="space-y-5 hidden">
+                    <div>
+                        <label class="block text-[13px] font-medium text-[#6B7280] mb-1.5">Full Name</label>
+                        <input type="text" id="registerName" required class="coral-input w-full text-[#1A1A2E]" placeholder="Enter your full name">
+                    </div>
+                    <div>
+                        <label class="block text-[13px] font-medium text-[#6B7280] mb-1.5">Email</label>
+                        <input type="email" id="registerEmail" required class="coral-input w-full text-[#1A1A2E]" placeholder="Enter your email">
+                    </div>
+                    <div>
+                        <label class="block text-[13px] font-medium text-[#6B7280] mb-1.5">Password</label>
+                        <input type="password" id="registerPassword" required minlength="6" class="coral-input w-full text-[#1A1A2E]" placeholder="Create a password (min 6 chars)">
+                    </div>
+                    <div>
+                        <label class="block text-[13px] font-medium text-[#6B7280] mb-1.5">Confirm Password</label>
+                        <input type="password" id="registerConfirm" required class="coral-input w-full text-[#1A1A2E]" placeholder="Confirm your password">
+                    </div>
+                    <div id="registerError" class="hidden text-[#F1473A] text-sm"></div>
+                    <button type="submit" id="registerBtn" class="coral-btn w-full text-white flex items-center justify-center gap-2">
+                        <span id="registerBtnText">Create Account</span>
+                        <svg id="registerSpinner" class="hidden w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </button>
+                </form>
+
+                <!-- Test Accounts -->
+                <div class="mt-8 p-4 rounded-xl" style="background: #FFF0EC;">
+                    <p class="text-xs font-medium text-[#F1473A] text-center mb-2">Test Accounts</p>
+                    <p class="text-xs text-[#F1473A]/80 text-center font-mono">Admin: admin@test.com / Admin123</p>
+                    <p class="text-xs text-[#F1473A]/80 text-center font-mono">User: user@test.com / User123</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-white border-l-4 border-[#F1473A] px-5 py-3 rounded-lg shadow-lg transform translate-x-full transition-all duration-300 z-[9999] hidden text-sm text-[#1A1A2E]"></div>
+
+    <script>
+        const API = 'http://localhost:5005/api';
+        const loginTab = document.getElementById('loginTab');
+        const registerTab = document.getElementById('registerTab');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+
+        function switchToLogin() {
+            loginTab.classList.add('tab-active');
+            loginTab.classList.remove('tab-inactive');
+            registerTab.classList.remove('tab-active');
+            registerTab.classList.add('tab-inactive');
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+        }
+
+        function switchToRegister() {
+            registerTab.classList.add('tab-active');
+            registerTab.classList.remove('tab-inactive');
+            loginTab.classList.remove('tab-active');
+            loginTab.classList.add('tab-inactive');
+            registerForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+        }
+
+        loginTab.addEventListener('click', switchToLogin);
+        registerTab.addEventListener('click', switchToRegister);
+
+        // Check for #register hash in URL on page load
+        if (window.location.hash === '#register') {
+            switchToRegister();
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.borderLeftColor = type === 'success' ? '#F1473A' : '#ef4444';
+            toast.classList.remove('hidden');
+            void toast.offsetWidth;
+            toast.classList.remove('translate-x-full');
+
+            toast.removeEventListener('transitionend', handleTransitionEnd);
+
+            function handleTransitionEnd(e) {
+                if (e.propertyName === 'transform' && toast.classList.contains('translate-x-full')) {
+                    toast.classList.add('hidden');
+                }
+            }
+
+            toast.addEventListener('transitionend', handleTransitionEnd);
+            setTimeout(() => toast.classList.add('translate-x-full'), 3000);
+        }
+
+        function setLoading(btnId, spinnerId, textId, loading) {
+            const btn = document.getElementById(btnId);
+            const spinner = document.getElementById(spinnerId);
+            const text = document.getElementById(textId);
+            btn.disabled = loading;
+            spinner.classList.toggle('hidden', !loading);
+            text.classList.toggle('opacity-0', loading);
+        }
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const errorDiv = document.getElementById('loginError');
+            errorDiv.classList.add('hidden');
+            setLoading('loginBtn', 'loginSpinner', 'loginBtnText', true);
+
+            try {
+                const response = await fetch(`${API}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: document.getElementById('loginEmail').value,
+                        password: document.getElementById('loginPassword').value
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    localStorage.setItem('token', data.data.token);
+                    localStorage.setItem('user', JSON.stringify(data.data.user));
+                    showToast('Login successful!', 'success');
+                    setTimeout(() => {
+                        if (data.data.user.role === 'admin') {
+                            window.location.href = 'admin.html';
+                        } else {
+                            window.location.href = 'dashboard.html';
+                        }
+                    }, 500);
+                } else {
+                    errorDiv.textContent = data.message;
+                    errorDiv.classList.remove('hidden');
+                }
+            } catch (error) {
+                errorDiv.textContent = 'Network error. Please try again.';
+                errorDiv.classList.remove('hidden');
+            } finally {
+                setLoading('loginBtn', 'loginSpinner', 'loginBtnText', false);
+            }
+        });
+
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const errorDiv = document.getElementById('registerError');
+            errorDiv.classList.add('hidden');
+
+            const password = document.getElementById('registerPassword').value;
+            const confirm = document.getElementById('registerConfirm').value;
+
+            if (password !== confirm) {
+                errorDiv.textContent = 'Passwords do not match';
+                errorDiv.classList.remove('hidden');
+                return;
+            }
+
+            if (password.length < 6) {
+                errorDiv.textContent = 'Password must be at least 6 characters';
+                errorDiv.classList.remove('hidden');
+                return;
+            }
+
+            setLoading('registerBtn', 'registerSpinner', 'registerBtnText', true);
+
+            try {
+                const response = await fetch(`${API}/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: document.getElementById('registerName').value,
+                        email: document.getElementById('registerEmail').value,
+                        password: password
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    localStorage.setItem('token', data.data.token);
+                    localStorage.setItem('user', JSON.stringify(data.data.user));
+                    showToast('Registration successful!', 'success');
+                    setTimeout(() => window.location.href = 'dashboard.html', 500);
+                } else {
+                    errorDiv.textContent = data.message;
+                    errorDiv.classList.remove('hidden');
+                }
+            } catch (error) {
+                errorDiv.textContent = 'Network error. Please try again.';
+                errorDiv.classList.remove('hidden');
+            } finally {
+                setLoading('registerBtn', 'registerSpinner', 'registerBtnText', false);
+            }
+        });
+
+        if (localStorage.getItem('token')) {
+            const user = JSON.parse(localStorage.getItem('user') || '{}');
+            window.location.href = user.role === 'admin' ? 'admin.html' : 'dashboard.html';
+        }
+    </script>
+</body>
+</html>

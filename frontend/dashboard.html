@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CivicDesk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: #FFF8F6;
+            color: #1A1A2E;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #FFF0EC; }
+        ::-webkit-scrollbar-thumb { background: #F1473A; border-radius: 4px; }
+
+        /* Input styles */
+        .coral-input {
+            background-color: #FFF8F6;
+            border: 1.5px solid #F0E0DC;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #1A1A2E;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+        .coral-input:focus {
+            outline: none;
+            border-color: #F1473A;
+            box-shadow: 0 0 0 3px rgba(241, 71, 58, 0.1);
+        }
+        .coral-input::placeholder { color: #9CA3AF; }
+
+        /* Select styles */
+        .coral-select {
+            background-color: #FFF8F6;
+            border: 1.5px solid #F0E0DC;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #1A1A2E;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 20px;
+            padding-right: 40px;
+        }
+        .coral-select:focus {
+            outline: none;
+            border-color: #F1473A;
+            box-shadow: 0 0 0 3px rgba(241, 71, 58, 0.1);
+        }
+
+        /* Textarea styles */
+        .coral-textarea {
+            background-color: #FFF8F6;
+            border: 1.5px solid #F0E0DC;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #1A1A2E;
+            width: 100%;
+            resize: vertical;
+            min-height: 100px;
+            transition: all 0.2s ease;
+        }
+        .coral-textarea:focus {
+            outline: none;
+            border-color: #F1473A;
+            box-shadow: 0 0 0 3px rgba(241, 71, 58, 0.1);
+        }
+
+        /* Button styles */
+        .btn-primary {
+            background-color: #F1473A;
+            color: white;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-weight: 700;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-primary:hover {
+            background-color: #D63B2F;
+            transform: scale(1.01);
+        }
+        .btn-primary:active { transform: scale(0.99); }
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #F1473A;
+            border: 1.5px solid #F1473A;
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-outline:hover {
+            background-color: #F1473A;
+            color: white;
+        }
+
+        .btn-outline-sm {
+            background-color: transparent;
+            color: #F1473A;
+            border: 1px solid #F1473A;
+            border-radius: 50px;
+            padding: 6px 16px;
+            font-weight: 500;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-outline-sm:hover {
+            background-color: #F1473A;
+            color: white;
+        }
+
+        /* Card styles */
+        .coral-card {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(241, 71, 58, 0.08);
+            padding: 24px;
+            transition: all 0.2s ease;
+        }
+        .coral-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(241, 71, 58, 0.12);
+        }
+
+        /* Stats card */
+        .stats-card {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(241, 71, 58, 0.08);
+            padding: 24px;
+            transition: all 0.2s ease;
+        }
+        .stats-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(241, 71, 58, 0.12);
+        }
+
+        /* Status badges */
+        .badge-pending {
+            background-color: #FEF3C7;
+            color: #92400E;
+            border-radius: 50px;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .badge-in_progress {
+            background-color: #DBEAFE;
+            color: #1E40AF;
+            border-radius: 50px;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .badge-resolved {
+            background-color: #D1FAE5;
+            color: #065F46;
+            border-radius: 50px;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Department tag */
+        .dept-tag {
+            background-color: #FFF0EC;
+            color: #F1473A;
+            border-radius: 50px;
+            padding: 2px 10px;
+            font-size: 12px;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        /* Complaint row */
+        .complaint-row {
+            border-bottom: 1px solid #FFF0EC;
+            padding: 16px 0;
+            transition: background-color 0.2s ease;
+        }
+        .complaint-row:hover {
+            background-color: #FFF8F6;
+        }
+        .complaint-row:last-child {
+            border-bottom: none;
+        }
+
+        /* Response panel */
+        .response-item {
+            border-left: 3px solid #F1473A;
+            padding: 12px 16px;
+            background-color: #FFF8F6;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 8px;
+        }
+
+        /* Modal overlay */
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(4px);
+        }
+
+        /* Empty state */
+        .empty-state-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(241, 71, 58, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Top Navigation -->
+    <nav class="bg-white border-b border-[#F0E0DC] sticky top-0 z-[100]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-[#F1473A] rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">CD</span>
+                    </div>
+                    <span class="text-xl font-bold text-[#1A1A2E]">CivicDesk</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-2">
+                        <div id="userAvatar" class="w-8 h-8 bg-[#F1473A] rounded-full flex items-center justify-center text-white text-sm font-semibold">
+                            <!-- Initials from JS -->
+                        </div>
+                        <span id="userName" class="text-[#1A1A2E] font-medium hidden sm:block"></span>
+                    </div>
+
+                    <!-- Settings Button -->
+                    <button onclick="openSettingsModal()" class="text-[#6B7280] hover:text-[#1A1A2E] p-2 rounded-lg transition" title="Settings">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31 2.37 2.37a1.724 1.724 0 002.572 1.065c.426 1.756 2.924 1.756 3.35 0a1.724 1.724 0 002.573-1.066c1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </button>
+
+                    <button onclick="logout()" class="btn-outline">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Stats Cards Row -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="stats-card">
+                <div class="w-10 h-10 rounded-lg bg-[rgba(241,71,58,0.1)] flex items-center justify-center mb-3">
+                    <svg class="w-5 h-5 text-[#F1473A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                </div>
+                <p id="totalCount" class="text-3xl font-bold text-[#1A1A2E]">0</p>
+                <p class="text-[#6B7280] text-sm mt-1">Total</p>
+            </div>
+            <div class="stats-card">
+                <div class="w-10 h-10 rounded-lg bg-[#FEF3C7] flex items-center justify-center mb-3">
+                    <svg class="w-5 h-5 text-[#92400E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <p id="pendingCount" class="text-3xl font-bold text-[#1A1A2E]">0</p>
+                <p class="text-[#6B7280] text-sm mt-1">Pending</p>
+            </div>
+            <div class="stats-card">
+                <div class="w-10 h-10 rounded-lg bg-[#DBEAFE] flex items-center justify-center mb-3">
+                    <svg class="w-5 h-5 text-[#1E40AF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                </div>
+                <p id="inProgressCount" class="text-3xl font-bold text-[#1A1A2E]">0</p>
+                <p class="text-[#6B7280] text-sm mt-1">In Progress</p>
+            </div>
+            <div class="stats-card">
+                <div class="w-10 h-10 rounded-lg bg-[#D1FAE5] flex items-center justify-center mb-3">
+                    <svg class="w-5 h-5 text-[#065F46]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <p id="resolvedCount" class="text-3xl font-bold text-[#1A1A2E]">0</p>
+                <p class="text-[#6B7280] text-sm mt-1">Resolved</p>
+            </div>
+        </div>
+
+        <!-- Complaints Section Header -->
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl font-bold text-[#1A1A2E]">My Complaints</h2>
+            <button onclick="openModal()" class="btn-primary">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
+                New Complaint
+            </button>
+        </div>
+
+        <!-- Complaints Container -->
+        <div class="coral-card">
+            <div id="complaintsList"></div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden text-center py-16">
+                <div class="empty-state-icon mx-auto mb-4">
+                    <svg class="w-10 h-10 text-[#F1473A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                </div>
+                <p class="text-[#6B7280] text-lg mb-4">No complaints yet</p>
+                <button onclick="openModal()" class="btn-primary">Submit your first complaint</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- New Complaint Modal -->
+    <div id="complaintModal" class="fixed inset-0 modal-overlay hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-[20px] w-full max-w-[480px] p-8 fade-in shadow-2xl">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-[#1A1A2E]">Submit New Complaint</h2>
+                    <button onclick="closeModal()" class="text-[#6B7280] hover:text-[#1A1A2E] transition">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <form id="complaintForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-[#1A1A2E] mb-2">Title</label>
+                        <input type="text" id="complaintTitle" required class="coral-input" placeholder="Brief summary of your complaint">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-[#1A1A2E] mb-2">Department</label>
+                        <select id="complaintDept" required class="coral-select">
+                            <option value="">Select a department</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-[#1A1A2E] mb-2">Description</label>
+                        <textarea id="complaintDesc" required rows="4" class="coral-textarea" placeholder="Describe your complaint in detail..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-[#1A1A2E] mb-2">Attachments (Optional)</label>
+                        <input type="file" id="complaintFiles" multiple accept=".jpg,.jpeg,.png,.gif,.pdf,.doc,.docx,.txt"
+                            class="coral-input file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#F1473A] file:text-white hover:file:bg-[#D63B2F]">
+                        <p class="text-xs text-[#9CA3AF] mt-1">Max 5 files, 5MB each. Allowed: Images, PDF, DOC, DOCX, TXT</p>
+                        <div id="fileList" class="mt-2 space-y-1"></div>
+                    </div>
+
+                    <div id="formError" class="hidden text-[#F1473A] text-sm"></div>
+
+                    <button type="submit" id="submitBtn" class="btn-primary w-full">
+                        <span id="submitText">Submit Complaint</span>
+                        <svg id="submitSpinner" class="hidden w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="fixed inset-0 modal-overlay hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-[20px] w-full max-w-md p-8 fade-in shadow-2xl">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-[#1A1A2E]">Settings</h2>
+                    <button onclick="closeSettingsModal()" class="text-[#6B7280] hover:text-[#1A1A2E] transition">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Profile Edit -->
+                <div>
+                    <h3 class="text-sm font-medium text-[#6B7280] mb-4">Edit Profile</h3>
+                    <form id="profileForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-[#1A1A2E] mb-2">Name</label>
+                            <input type="text" id="editName" required class="coral-input">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[#1A1A2E] mb-2">Email</label>
+                            <input type="email" id="editEmail" required class="coral-input">
+                        </div>
+                        <div class="border-t border-[#F0E0DC] pt-4 mt-4">
+                            <h4 class="text-sm font-medium text-[#6B7280] mb-4">Change Password (Optional)</h4>
+                            <div>
+                                <label class="block text-sm font-medium text-[#1A1A2E] mb-2">Current Password</label>
+                                <input type="password" id="currentPassword" class="coral-input" placeholder="Leave blank if not changing">
+                            </div>
+                            <div class="mt-3">
+                                <label class="block text-sm font-medium text-[#1A1A2E] mb-2">New Password</label>
+                                <input type="password" id="newPassword" minlength="6" class="coral-input" placeholder="Min 6 characters">
+                            </div>
+                        </div>
+                        <div id="profileError" class="hidden text-[#F1473A] text-sm"></div>
+                        <button type="submit" id="profileBtn" class="btn-primary w-full">
+                            <span id="profileBtnText">Save Changes</span>
+                            <svg id="profileSpinner" class="hidden w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-white border-l-4 border-[#F1473A] px-5 py-3 rounded-lg shadow-lg transform translate-x-full transition-all duration-300 z-[9999] hidden text-sm text-[#1A1A2E]"></div>
+
+    <script>
+        const API = 'http://localhost:5005/api';
+        let token = localStorage.getItem('token');
+        let user = JSON.parse(localStorage.getItem('user') || '{}');
+        let complaints = [];
+        let departments = [];
+
+        if (!token) {
+            window.location.href = 'login.html';
+        }
+
+        // Set user name and avatar
+        document.getElementById('userName').textContent = user.name;
+        const userInitials = user.name ? user.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) : 'U';
+        document.getElementById('userAvatar').textContent = userInitials;
+
+        // Prevent back button from restoring session after logout
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        });
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.borderLeftColor = type === 'success' ? '#F1473A' : '#ef4444';
+            toast.classList.remove('hidden');
+            void toast.offsetWidth;
+            toast.classList.remove('translate-x-full');
+
+            toast.removeEventListener('transitionend', handleTransitionEnd);
+
+            function handleTransitionEnd(e) {
+                if (e.propertyName === 'transform' && toast.classList.contains('translate-x-full')) {
+                    toast.classList.add('hidden');
+                    toast.classList.remove('opacity-0');
+                }
+            }
+
+            toast.addEventListener('transitionend', handleTransitionEnd);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0');
+                setTimeout(() => toast.classList.add('translate-x-full'), 300);
+            }, 4000);
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'index.html';
+        }
+
+        // Settings Modal
+        function openSettingsModal() {
+            document.getElementById('settingsModal').classList.remove('hidden');
+            document.getElementById('profileError').classList.add('hidden');
+
+            // Load current user data
+            document.getElementById('editName').value = user.name;
+            document.getElementById('editEmail').value = user.email;
+            document.getElementById('currentPassword').value = '';
+            document.getElementById('newPassword').value = '';
+        }
+
+        function closeSettingsModal() {
+            document.getElementById('settingsModal').classList.add('hidden');
+        }
+
+        // Profile form submission
+        document.getElementById('profileForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const errorDiv = document.getElementById('profileError');
+            errorDiv.classList.add('hidden');
+
+            const btn = document.getElementById('profileBtn');
+            const text = document.getElementById('profileBtnText');
+            const spinner = document.getElementById('profileSpinner');
+
+            btn.disabled = true;
+            text.classList.add('hidden');
+            spinner.classList.remove('hidden');
+
+            const updateData = {
+                name: document.getElementById('editName').value,
+                email: document.getElementById('editEmail').value
+            };
+
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+
+            if (newPassword) {
+                if (!currentPassword) {
+                    errorDiv.textContent = 'Current password is required to change password';
+                    errorDiv.classList.remove('hidden');
+                    btn.disabled = false;
+                    text.classList.remove('hidden');
+                    spinner.classList.add('hidden');
+                    return;
+                }
+                updateData.currentPassword = currentPassword;
+                updateData.newPassword = newPassword;
+            }
+
+            try {
+                const response = await fetch(`${API}/auth/profile`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(updateData)
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Update local storage
+                    user.name = data.data.name;
+                    user.email = data.data.email;
+                    localStorage.setItem('user', JSON.stringify(user));
+                    document.getElementById('userName').textContent = user.name;
+                    const newInitials = user.name ? user.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) : 'U';
+                    document.getElementById('userAvatar').textContent = newInitials;
+
+                    showToast('Profile updated successfully!', 'success');
+                    closeSettingsModal();
+                } else {
+                    errorDiv.textContent = data.message;
+                    errorDiv.classList.remove('hidden');
+                }
+            } catch (error) {
+                errorDiv.textContent = 'Network error. Please try again.';
+                errorDiv.classList.remove('hidden');
+            } finally {
+                btn.disabled = false;
+                text.classList.remove('hidden');
+                spinner.classList.add('hidden');
+            }
+        });
+
+        async function fetchDepartments() {
+            try {
+                const response = await fetch(`${API}/departments`);
+                const data = await response.json();
+                if (data.success) {
+                    departments = data.data;
+                    const select = document.getElementById('complaintDept');
+                    departments.forEach(dept => {
+                        const option = document.createElement('option');
+                        option.value = dept._id;
+                        option.textContent = dept.name;
+                        select.appendChild(option);
+                    });
+                }
+            } catch (error) {
+                console.error('Error fetching departments:', error);
+            }
+        }
+
+        function getStatusBadge(status) {
+            const badges = {
+                pending: '<span class="badge-pending">Pending</span>',
+                in_progress: '<span class="badge-in_progress">In Progress</span>',
+                resolved: '<span class="badge-resolved">Resolved</span>'
+            };
+            return badges[status] || status;
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        function toggleExpand(id) {
+            const content = document.getElementById(`content-${id}`);
+            const arrow = document.getElementById(`arrow-${id}`);
+            content.classList.toggle('hidden');
+            arrow.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+
+        function renderAttachments(attachments) {
+            if (!attachments || attachments.length === 0) return '';
+            return `
+                <div class="mt-4">
+                    <h4 class="text-sm font-medium text-[#6B7280] mb-2">Attachments</h4>
+                    <div class="flex flex-wrap gap-2">
+                        ${attachments.map(att => `
+                            <a href="${API.replace('/api', '')}/uploads/${att.filename}" target="_blank"
+                               class="inline-flex items-center gap-2 bg-[#FFF8F6] hover:bg-[#FFF0EC] px-3 py-2 rounded-lg text-sm text-[#F1473A] transition border border-[#F0E0DC]">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"/>
+                                </svg>
+                                ${att.originalName}
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderComplaints() {
+            const list = document.getElementById('complaintsList');
+            const emptyState = document.getElementById('emptyState');
+
+            if (complaints.length === 0) {
+                list.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            let total = complaints.length;
+            let pending = complaints.filter(c => c.status === 'pending').length;
+            let inProgress = complaints.filter(c => c.status === 'in_progress').length;
+            let resolved = complaints.filter(c => c.status === 'resolved').length;
+
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('pendingCount').textContent = pending;
+            document.getElementById('inProgressCount').textContent = inProgress;
+            document.getElementById('resolvedCount').textContent = resolved;
+
+            list.innerHTML = complaints.map(complaint => `
+                <div class="complaint-row">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="flex-1">
+                            <div class="flex flex-wrap items-center gap-3 mb-2">
+                                <h3 class="text-base font-bold text-[#1A1A2E]">${complaint.title}</h3>
+                                ${getStatusBadge(complaint.status)}
+                            </div>
+                            <p class="dept-tag">${complaint.deptId?.name || 'Unknown Department'}</p>
+                            <p class="text-[#9CA3AF] text-[13px] mt-2">Submitted on ${formatDate(complaint.createdAt)}</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button onclick="openResponseModal('${complaint._id}')" class="btn-outline-sm">View Responses</button>
+                            <button onclick="toggleExpand('${complaint._id}')" class="flex items-center gap-2 text-[#F1473A] hover:text-[#D63B2F] transition text-sm font-medium">
+                                View Details
+                                <svg id="arrow-${complaint._id}" class="w-4 h-4 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="content-${complaint._id}" class="hidden mt-4 pt-4 border-t border-[#FFF0EC]">
+                        <p class="text-[#1A1A2E] mb-4">${complaint.description}</p>
+                        ${renderAttachments(complaint.attachments)}
+                        <div id="responses-${complaint._id}"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function loadComplaints() {
+            try {
+                const response = await fetch(`${API}/complaints`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await response.json();
+                if (data.success) {
+                    complaints = data.data;
+                    renderComplaints();
+                    complaints.forEach(c => loadResponses(c._id));
+                }
+            } catch (error) {
+                showToast('Error loading complaints', 'error');
+            }
+        }
+
+        async function loadResponses(complaintId) {
+            try {
+                const response = await fetch(`${API}/responses/${complaintId}`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await response.json();
+                if (data.success && data.data.length > 0) {
+                    const container = document.getElementById(`responses-${complaintId}`);
+                    container.innerHTML = `
+                        <h4 class="text-sm font-medium text-[#6B7280] mb-3 mt-4">Responses</h4>
+                        <div class="space-y-2">
+                            ${data.data.map(r => `
+                                <div class="response-item">
+                                    <p class="text-[#F1473A] text-xs font-semibold mb-1">Admin</p>
+                                    <p class="text-[#1A1A2E] text-sm">${r.message}</p>
+                                    <p class="text-[#9CA3AF] text-xs mt-2">${formatDate(r.date)}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading responses:', error);
+            }
+        }
+
+        // View responses - same as toggle expand
+        function openResponseModal(complaintId) {
+            toggleExpand(complaintId);
+        }
+
+        function openModal() {
+            document.getElementById('complaintModal').classList.remove('hidden');
+            document.getElementById('complaintForm').reset();
+            document.getElementById('formError').classList.add('hidden');
+            document.getElementById('fileList').innerHTML = '';
+        }
+
+        function closeModal() {
+            document.getElementById('complaintModal').classList.add('hidden');
+        }
+
+        // File upload preview
+        document.getElementById('complaintFiles').addEventListener('change', function(e) {
+            const files = Array.from(e.target.files);
+            const fileList = document.getElementById('fileList');
+
+            if (files.length > 5) {
+                showToast('Maximum 5 files allowed', 'error');
+                this.value = '';
+                fileList.innerHTML = '';
+                return;
+            }
+
+            fileList.innerHTML = files.map(file => `
+                <div class="flex items-center gap-2 text-sm text-[#6B7280]">
+                    <svg class="w-4 h-4 text-[#F1473A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+                    </svg>
+                    ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)
+                </div>
+            `).join('');
+        });
+
+        document.getElementById('complaintForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const errorDiv = document.getElementById('formError');
+            errorDiv.classList.add('hidden');
+
+            const btn = document.getElementById('submitBtn');
+            const text = document.getElementById('submitText');
+            const spinner = document.getElementById('submitSpinner');
+
+            btn.disabled = true;
+            text.classList.add('hidden');
+            spinner.classList.remove('hidden');
+
+            const formData = new FormData();
+            formData.append('title', document.getElementById('complaintTitle').value);
+            formData.append('description', document.getElementById('complaintDesc').value);
+            formData.append('deptId', document.getElementById('complaintDept').value);
+
+            const files = document.getElementById('complaintFiles').files;
+            for (let i = 0; i < files.length; i++) {
+                formData.append('attachments', files[i]);
+            }
+
+            try {
+                const response = await fetch(`${API}/complaints`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showToast('Complaint submitted successfully!', 'success');
+                    closeModal();
+                    loadComplaints();
+                } else {
+                    errorDiv.textContent = data.message;
+                    errorDiv.classList.remove('hidden');
+                }
+            } catch (error) {
+                errorDiv.textContent = 'Network error. Please try again.';
+                errorDiv.classList.remove('hidden');
+            } finally {
+                btn.disabled = false;
+                text.classList.remove('hidden');
+                spinner.classList.add('hidden');
+            }
+        });
+
+        fetchDepartments();
+        loadComplaints();
+    </script>
+</body>
+</html>
