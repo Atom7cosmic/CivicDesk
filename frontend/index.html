@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CivicDesk - One platform. Every complaint resolved.</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CivicDesk - One platform. Every complaint resolved.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet">
+    <style>
     * {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
     }
@@ -257,401 +259,498 @@
       margin-top: 4px;
     }
   </style>
-</head>
-<body class="bg-white text-gray-900 overflow-x-hidden">
+  </head>
+  <body class="bg-white text-gray-900 overflow-x-hidden">
 
-  <!-- Top navigation with wordmark -->
-  <div class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-10 py-6">
-    <!-- Wordmark/Logo -->
-    <div class="hero-wordmark">
-      <div>CIVIC</div>
-      <div>DESK</div>
-      <div class="hero-wordmark-rule"></div>
-    </div>
-
-    <!-- Right nav buttons -->
-    <div class="flex items-center gap-4">
-      <a href="login.html" class="text-gray-600 hover:text-gray-900 font-medium transition">Log in</a>
-      <a href="login.html#register" class="bg-white border-2 border-gray-200 hover:border-gray-900 text-gray-900 px-5 py-2.5 rounded-full font-medium transition">Sign up</a>
-    </div>
-  </div>
-
-  <!-- HERO SECTION -->
-  <section class="gradient-hero min-h-screen flex items-center justify-center relative overflow-hidden">
-    <!-- Parallax background elements -->
-    <div id="heroBg" class="absolute inset-0 pointer-events-none">
-      <div class="absolute top-20 left-10 w-64 h-64 bg-pink-300/30 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-20 right-10 w-96 h-96 bg-orange-200/40 rounded-full blur-3xl"></div>
-      <div class="absolute top-1/2 left-1/3 w-48 h-48 bg-coral/20 rounded-full blur-2xl"></div>
-    </div>
-
-    <!-- Orb behind content -->
-    <div class="orb absolute opacity-50"></div>
-
-    <!-- Centered content -->
-    <div class="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-      <h1 class="font-black leading-none mb-6" style="font-size: clamp(52px, 8vw, 96px); line-height: 1.0; max-width: 900px; margin-left: auto; margin-right: auto;">
-        <span class="hero-word" style="color: #1A1A2E;">One</span>
-        <span class="hero-word" style="color: #1A1A2E;">platform.</span>
-        <br>
-        <span class="hero-word" style="color: #F1473A;">Every</span>
-        <span class="hero-word" style="color: #F1473A;">complaint</span>
-        <span class="hero-word" style="color: #F1473A;">resolved.</span>
-      </h1>
-
-      <p class="hero-subtext leading-relaxed" style="font-size: clamp(16px, 2.2vw, 22px); max-width: 680px; margin-left: auto; margin-right: auto; margin-top: 24px;">
-        <span class="sub-word" data-text="A">A</span>
-        <span class="sub-word" data-text="modern">modern</span>
-        <span class="sub-word" data-text="platform">platform</span>
-        <span class="sub-word" data-text="for">for</span>
-        <span class="sub-word" data-text="managing">managing</span>
-        <span class="sub-word" data-text="civic">civic</span>
-        <span class="sub-word" data-text="complaints">complaints</span>
-        <span class="sub-word" data-text="and">and</span>
-        <span class="sub-word" data-text="feedback.">feedback.</span>
-        <span class="sub-word" data-text="Submit">Submit</span>
-        <span class="sub-word" data-text="issues,">issues,</span>
-        <span class="sub-word" data-text="track">track</span>
-        <span class="sub-word" data-text="progress,">progress,</span>
-        <span class="sub-word" data-text="and">and</span>
-        <span class="sub-word" data-text="get">get</span>
-        <span class="sub-word" data-text="timely">timely</span>
-        <span class="sub-word" data-text="responses">responses</span>
-        <span class="sub-word" data-text="from">from</span>
-        <span class="sub-word" data-text="dedicated">dedicated</span>
-        <span class="sub-word" data-text="departments.">departments.</span>
-      </p>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <svg class="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-      </svg>
-    </div>
-  </section>
-
-  <!-- STATEMENT SECTION -->
-  <section class="min-h-screen flex items-center justify-center bg-white relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="reveal-scale text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-black text-[#F1473A] leading-none tracking-tight">
-        Streamline your<br>civic feedback.
-      </h2>
-    </div>
-    <!-- Decorative elements -->
-    <div class="absolute top-20 left-20 w-32 h-32 border-4 border-pink-200 rounded-full reveal stagger-2"></div>
-    <div class="absolute bottom-20 right-20 w-24 h-24 bg-orange-100 rounded-full reveal stagger-3"></div>
-  </section>
-
-  <!-- FEATURES SCATTER SECTION -->
-  <section class="min-h-screen bg-white relative py-32 overflow-hidden">
-    <!-- Large background text -->
-    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <h3 class="text-[120px] sm:text-[180px] lg:text-[220px] font-black text-gray-50 leading-none text-center select-none reveal">
-        Track<br>everything
-      </h3>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <!-- Section title -->
-      <div class="text-center mb-20 reveal">
-        <span class="inline-block bg-[#F1473A]/10 text-[#F1473A] px-4 py-2 rounded-full text-sm font-semibold mb-4">Real-time Updates</span>
-        <h3 class="text-4xl sm:text-5xl font-bold text-gray-900">Track everything<br>in real time.</h3>
+    <!-- Top navigation with wordmark -->
+    <div
+      class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-10 py-6">
+      <!-- Wordmark/Logo -->
+      <div class="hero-wordmark">
+        <div>CIVIC</div>
+        <div>DESK</div>
+        <div class="hero-wordmark-rule"></div>
       </div>
 
-      <!-- Floating cards grid -->
-      <div class="relative h-[700px]">
-        <!-- Card 1 - Pink complaint card -->
-        <div class="absolute top-0 left-[5%] sm:left-[10%] w-72 bg-gradient-to-br from-pink-50 to-pink-100 rounded-3xl p-6 card-shadow float-card reveal stagger-1 transform -rotate-3 hover:rotate-0 transition-transform duration-300">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 bg-pink-500 rounded-xl flex items-center justify-center">
-              <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+      <!-- Right nav buttons -->
+      <div class="flex items-center gap-4">
+        <a href="login.html"
+          class="text-gray-600 hover:text-gray-900 font-medium transition">Log
+          in</a>
+        <a href="login.html#register"
+          class="bg-white border-2 border-gray-200 hover:border-gray-900 text-gray-900 px-5 py-2.5 rounded-full font-medium transition">Sign
+          up</a>
+      </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section
+      class="gradient-hero min-h-screen flex items-center justify-center relative overflow-hidden">
+      <!-- Parallax background elements -->
+      <div id="heroBg" class="absolute inset-0 pointer-events-none">
+        <div
+          class="absolute top-20 left-10 w-64 h-64 bg-pink-300/30 rounded-full blur-3xl"></div>
+        <div
+          class="absolute bottom-20 right-10 w-96 h-96 bg-orange-200/40 rounded-full blur-3xl"></div>
+        <div
+          class="absolute top-1/2 left-1/3 w-48 h-48 bg-coral/20 rounded-full blur-2xl"></div>
+      </div>
+
+      <!-- Orb behind content -->
+      <div class="orb absolute opacity-50"></div>
+
+      <!-- Centered content -->
+      <div
+        class="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+        <h1 class="font-black leading-none mb-6"
+          style="font-size: clamp(52px, 8vw, 96px); line-height: 1.0; max-width: 900px; margin-left: auto; margin-right: auto;">
+          <span class="hero-word" style="color: #1A1A2E;">One</span>
+          <span class="hero-word" style="color: #1A1A2E;">platform.</span>
+          <br>
+          <span class="hero-word" style="color: #F1473A;">Every</span>
+          <span class="hero-word" style="color: #F1473A;">complaint</span>
+          <span class="hero-word" style="color: #F1473A;">resolved.</span>
+        </h1>
+
+        <p class="hero-subtext leading-relaxed"
+          style="font-size: clamp(16px, 2.2vw, 22px); max-width: 680px; margin-left: auto; margin-right: auto; margin-top: 24px;">
+          <span class="sub-word" data-text="A">A</span>
+          <span class="sub-word" data-text="modern">modern</span>
+          <span class="sub-word" data-text="platform">platform</span>
+          <span class="sub-word" data-text="for">for</span>
+          <span class="sub-word" data-text="managing">managing</span>
+          <span class="sub-word" data-text="civic">civic</span>
+          <span class="sub-word" data-text="complaints">complaints</span>
+          <span class="sub-word" data-text="and">and</span>
+          <span class="sub-word" data-text="feedback.">feedback.</span>
+          <span class="sub-word" data-text="Submit">Submit</span>
+          <span class="sub-word" data-text="issues,">issues,</span>
+          <span class="sub-word" data-text="track">track</span>
+          <span class="sub-word" data-text="progress,">progress,</span>
+          <span class="sub-word" data-text="and">and</span>
+          <span class="sub-word" data-text="get">get</span>
+          <span class="sub-word" data-text="timely">timely</span>
+          <span class="sub-word" data-text="responses">responses</span>
+          <span class="sub-word" data-text="from">from</span>
+          <span class="sub-word" data-text="dedicated">dedicated</span>
+          <span class="sub-word" data-text="departments.">departments.</span>
+        </p>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div
+        class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <svg class="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- STATEMENT SECTION -->
+    <section
+      class="min-h-screen flex items-center justify-center bg-white relative overflow-hidden">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2
+          class="reveal-scale text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-black text-[#F1473A] leading-none tracking-tight">
+          Streamline your<br>civic feedback.
+        </h2>
+      </div>
+      <!-- Decorative elements -->
+      <div
+        class="absolute top-20 left-20 w-32 h-32 border-4 border-pink-200 rounded-full reveal stagger-2"></div>
+      <div
+        class="absolute bottom-20 right-20 w-24 h-24 bg-orange-100 rounded-full reveal stagger-3"></div>
+    </section>
+
+    <!-- FEATURES SCATTER SECTION -->
+    <section class="min-h-screen bg-white relative py-32 overflow-hidden">
+      <!-- Large background text -->
+      <div
+        class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <h3
+          class="text-[120px] sm:text-[180px] lg:text-[220px] font-black text-gray-50 leading-none text-center select-none reveal">
+          Track<br>everything
+        </h3>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Section title -->
+        <div class="text-center mb-20 reveal">
+          <span
+            class="inline-block bg-[#F1473A]/10 text-[#F1473A] px-4 py-2 rounded-full text-sm font-semibold mb-4">Real-time
+            Updates</span>
+          <h3 class="text-4xl sm:text-5xl font-bold text-gray-900">Track
+            everything<br>in real time.</h3>
+        </div>
+
+        <!-- Floating cards grid -->
+        <div class="relative h-[700px]">
+          <!-- Card 1 - Pink complaint card -->
+          <div
+            class="absolute top-0 left-[5%] sm:left-[10%] w-72 bg-gradient-to-br from-pink-50 to-pink-100 rounded-3xl p-6 card-shadow float-card reveal stagger-1 transform -rotate-3 hover:rotate-0 transition-transform duration-300">
+            <div class="flex items-center gap-3 mb-4">
+              <div
+                class="w-12 h-12 bg-pink-500 rounded-xl flex items-center justify-center">
+                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-semibold text-gray-900">Equipments Missing</p>
+                <p class="text-sm text-gray-500">Bio-Tech</p>
+              </div>
+            </div>
+            <p class="text-gray-700 text-sm mb-3">Equipments are missing in lab 4...</p>
+            <span
+              class="inline-block bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-medium">Pending</span>
+          </div>
+
+          <!-- Card 2 - Green department card -->
+          <div
+            class="absolute top-[15%] right-[5%] sm:right-[15%] w-64 bg-gradient-to-br from-green-50 to-emerald-100 rounded-3xl p-6 card-shadow float-card reveal stagger-2 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+            <div
+              class="w-14 h-14 bg-green-500 rounded-2xl flex items-center justify-center mb-4">
+              <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
               </svg>
             </div>
-            <div>
-              <p class="font-semibold text-gray-900">Water Supply</p>
-              <p class="text-sm text-gray-500">Public Works</p>
+            <h4 class="font-bold text-gray-900 text-lg mb-1">12 Departments</h4>
+            <p class="text-sm text-gray-600">Connected and responding</p>
+          </div>
+
+          <!-- Card 4 - Coral stats card -->
+          <div
+            class="absolute top-[55%] right-[10%] sm:right-[20%] w-56 bg-gradient-to-br from-orange-50 to-red-50 rounded-3xl p-6 card-shadow float-card reveal stagger-4 transform rotate-6 hover:rotate-0 transition-transform duration-300">
+            <p class="text-5xl font-black text-[#F1473A] mb-2">100+</p>
+            <p class="text-gray-700 font-medium">Complaints Resolved</p>
+            <p class="text-sm text-gray-500 mt-1">This Semester alone</p>
+          </div>
+
+          <!-- Card 5 - Purple in-progress -->
+          <div
+            class="absolute bottom-[5%] left-[30%] w-64 bg-gradient-to-br from-purple-50 to-violet-100 rounded-3xl p-6 card-shadow float-card reveal stagger-5 transform rotate-1 hover:rotate-0 transition-transform duration-300">
+            <div class="flex items-center gap-3 mb-3">
+              <div
+                class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+              </div>
+              <span
+                class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs font-medium">In
+                Progress</span>
             </div>
-          </div>
-          <p class="text-gray-700 text-sm mb-3">Irregular water supply in Sector 4...</p>
-          <span class="inline-block bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-medium">Pending</span>
-        </div>
-
-        <!-- Card 2 - Green department card -->
-        <div class="absolute top-[15%] right-[5%] sm:right-[15%] w-64 bg-gradient-to-br from-green-50 to-emerald-100 rounded-3xl p-6 card-shadow float-card reveal stagger-2 transform rotate-3 hover:rotate-0 transition-transform duration-300">
-          <div class="w-14 h-14 bg-green-500 rounded-2xl flex items-center justify-center mb-4">
-            <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-            </svg>
-          </div>
-          <h4 class="font-bold text-gray-900 text-lg mb-1">12 Departments</h4>
-          <p class="text-sm text-gray-600">Connected and responding</p>
-        </div>
-
-        <!-- Card 3 - Blue resolved card -->
-        <div class="absolute top-[45%] left-[15%] sm:left-[25%] w-72 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-3xl p-6 card-shadow float-card reveal stagger-3 transform -rotate-2 hover:rotate-0 transition-transform duration-300">
-          <div class="flex items-center justify-between mb-4">
-            <span class="text-sm text-gray-500">#CMP-4821</span>
-            <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
-              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              Resolved
-            </span>
-          </div>
-          <p class="font-semibold text-gray-900 mb-2">Street Light Repair</p>
-          <p class="text-sm text-gray-600 mb-4">Main Street lights were repaired within 24 hours.</p>
-          <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
-            <span class="text-sm text-gray-600">John D.</span>
-          </div>
-        </div>
-
-        <!-- Card 4 - Coral stats card -->
-        <div class="absolute top-[55%] right-[10%] sm:right-[20%] w-56 bg-gradient-to-br from-orange-50 to-red-50 rounded-3xl p-6 card-shadow float-card reveal stagger-4 transform rotate-6 hover:rotate-0 transition-transform duration-300">
-          <p class="text-5xl font-black text-[#F1473A] mb-2">10K+</p>
-          <p class="text-gray-700 font-medium">Complaints Resolved</p>
-          <p class="text-sm text-gray-500 mt-1">This year alone</p>
-        </div>
-
-        <!-- Card 5 - Purple in-progress -->
-        <div class="absolute bottom-[5%] left-[30%] w-64 bg-gradient-to-br from-purple-50 to-violet-100 rounded-3xl p-6 card-shadow float-card reveal stagger-5 transform rotate-1 hover:rotate-0 transition-transform duration-300">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
-              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-              </svg>
+            <p class="font-semibold text-gray-900">Projector Repair</p>
+            <p class="text-sm text-gray-600 mt-1">Projector is being repaired</p>
+            <div class="mt-3 bg-gray-200 rounded-full h-2">
+              <div class="bg-purple-500 h-2 rounded-full"
+                style="width: 65%"></div>
             </div>
-            <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs font-medium">In Progress</span>
-          </div>
-          <p class="font-semibold text-gray-900">Road Maintenance</p>
-          <p class="text-sm text-gray-600 mt-1"> potholes being filled on Oak Ave</p>
-          <div class="mt-3 bg-gray-200 rounded-full h-2">
-            <div class="bg-purple-500 h-2 rounded-full" style="width: 65%"></div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- APP SHOWCASE SECTION -->
-  <section class="min-h-screen gradient-teal flex items-center relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <!-- Phone Mockup -->
-        <div class="flex justify-center reveal">
-          <div class="phone-mockup w-72 sm:w-80">
-            <div class="phone-screen h-[500px] sm:h-[560px] relative">
-              <!-- Phone UI -->
-              <div class="absolute inset-0 bg-gradient-to-b from-teal-600 to-teal-800 p-6">
-                <!-- Status bar -->
-                <div class="flex justify-between items-center mb-6 text-white/80 text-xs">
-                  <span>9:41</span>
-                  <div class="flex gap-1">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zm6-4a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zm6-3a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
-                  </div>
-                </div>
-                <!-- App content -->
-                <div class="text-white">
-                  <h4 class="text-2xl font-bold mb-6">My Complaints</h4>
-                  <!-- Complaint cards -->
-                  <div class="space-y-3">
-                    <div class="bg-white/20 backdrop-blur rounded-xl p-4">
-                      <div class="flex justify-between items-start mb-2">
-                        <span class="text-sm font-medium">Street Light</span>
-                        <span class="bg-green-400 text-xs px-2 py-0.5 rounded-full text-teal-900">Done</span>
-                      </div>
-                      <p class="text-xs text-white/70">Main St. repair completed</p>
-                    </div>
-                    <div class="bg-white/20 backdrop-blur rounded-xl p-4">
-                      <div class="flex justify-between items-start mb-2">
-                        <span class="text-sm font-medium">Water Issue</span>
-                        <span class="bg-yellow-400 text-xs px-2 py-0.5 rounded-full text-yellow-900">Progress</span>
-                      </div>
-                      <p class="text-xs text-white/70">Low pressure being fixed</p>
-                    </div>
-                    <div class="bg-white/20 backdrop-blur rounded-xl p-4">
-                      <div class="flex justify-between items-start mb-2">
-                        <span class="text-sm font-medium">Road Repair</span>
-                        <span class="bg-orange-400 text-xs px-2 py-0.5 rounded-full text-orange-900">Pending</span>
-                      </div>
-                      <p class="text-xs text-white/70">Potholes on Oak Ave</p>
+    <!-- APP SHOWCASE SECTION -->
+    <section
+      class="min-h-screen gradient-teal flex items-center relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <!-- Phone Mockup -->
+          <div class="flex justify-center reveal">
+            <div class="phone-mockup w-72 sm:w-80">
+              <div class="phone-screen h-[500px] sm:h-[560px] relative">
+                <!-- Phone UI -->
+                <div
+                  class="absolute inset-0 bg-gradient-to-b from-teal-600 to-teal-800 p-6">
+                  <!-- Status bar -->
+                  <div
+                    class="flex justify-between items-center mb-6 text-white/80 text-xs">
+                    <span>9:41</span>
+                    <div class="flex gap-1">
+                      <svg class="w-4 h-4" fill="currentColor"
+                        viewBox="0 0 20 20"><path
+                          d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zm6-4a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zm6-3a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" /></svg>
+                      <svg class="w-4 h-4" fill="currentColor"
+                        viewBox="0 0 20 20"><path fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                          clip-rule="evenodd" /></svg>
                     </div>
                   </div>
-                </div>
-                <!-- Bottom nav -->
-                <div class="absolute bottom-0 left-0 right-0 bg-white/10 backdrop-blur p-4">
-                  <div class="flex justify-around">
-                    <div class="w-6 h-6 bg-white/80 rounded"></div>
-                    <div class="w-6 h-6 bg-white/40 rounded"></div>
-                    <div class="w-6 h-6 bg-white/40 rounded"></div>
+                  <!-- App content -->
+                  <div class="text-white">
+                    <h4 class="text-2xl font-bold mb-6">My Complaints</h4>
+                    <!-- Complaint cards -->
+                    <div class="space-y-3">
+                      <div class="bg-white/20 backdrop-blur rounded-xl p-4">
+                        <div class="flex justify-between items-start mb-2">
+                          <span class="text-sm font-medium">Irregular
+                            Classes</span>
+                          <span
+                            class="bg-green-400 text-xs px-2 py-0.5 rounded-full text-teal-900">Done</span>
+                        </div>
+                        <p class="text-xs text-white/70">Issue Resolved</p>
+                      </div>
+                      <div class="bg-white/20 backdrop-blur rounded-xl p-4">
+                        <div class="flex justify-between items-start mb-2">
+                          <span class="text-sm font-medium">Exams Issue</span>
+                          <span
+                            class="bg-yellow-400 text-xs px-2 py-0.5 rounded-full text-yellow-900">Progress</span>
+                        </div>
+                        <p class="text-xs text-white/70">Issue in Progress</p>
+                      </div>
+                      <div class="bg-white/20 backdrop-blur rounded-xl p-4">
+                        <div class="flex justify-between items-start mb-2">
+                          <span class="text-sm font-medium">Projector
+                            Repair</span>
+                          <span
+                            class="bg-orange-400 text-xs px-2 py-0.5 rounded-full text-orange-900">Pending</span>
+                        </div>
+                        <p class="text-xs text-white/70">Issue Pending</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Bottom nav -->
+                  <div
+                    class="absolute bottom-0 left-0 right-0 bg-white/10 backdrop-blur p-4">
+                    <div class="flex justify-around">
+                      <div class="w-6 h-6 bg-white/80 rounded"></div>
+                      <div class="w-6 h-6 bg-white/40 rounded"></div>
+                      <div class="w-6 h-6 bg-white/40 rounded"></div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- Content -->
+          <div class="text-white reveal stagger-2">
+            <h3
+              class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              All your complaints,<br>one dashboard.
+            </h3>
+            <p class="text-xl text-teal-100 mb-10 max-w-lg leading-relaxed">
+              Track status updates, receive notifications, and manage everything
+              from a single, intuitive interface. Civic feedback made simple.
+            </p>
+            <a href="login.html"
+              class="btn-lift inline-flex items-center gap-2 bg-white text-teal-700 px-8 py-4 rounded-full font-semibold text-lg hover:bg-teal-50 transition">
+              Get Started
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Decorative circles -->
+      <div
+        class="absolute top-20 right-20 w-40 h-40 border border-white/20 rounded-full"></div>
+      <div
+        class="absolute bottom-40 left-10 w-60 h-60 border border-white/10 rounded-full"></div>
+    </section>
+
+    <!-- FEATURES LIST SECTION -->
+    <section class="min-h-screen bg-white py-32">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Label -->
+        <div class="mb-8 reveal">
+          <span
+            class="inline-block bg-[#F1473A] text-white px-6 py-3 rounded-full text-sm font-bold tracking-wide">FEATURES</span>
         </div>
 
-        <!-- Content -->
-        <div class="text-white reveal stagger-2">
-          <h3 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            All your complaints,<br>one dashboard.
+        <!-- Statement -->
+        <div class="mb-16 reveal stagger-1">
+          <h3
+            class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight max-w-4xl">
+            Contactless filing? Sure.<br>
+            Auto-routing? Check.<br>
+            <span class="text-[#F1473A]">Real-time tracking?</span> Also check.
           </h3>
-          <p class="text-xl text-teal-100 mb-10 max-w-lg leading-relaxed">
-            Track status updates, receive notifications, and manage everything from a single, intuitive interface. Civic feedback made simple.
-          </p>
-          <a href="login.html" class="btn-lift inline-flex items-center gap-2 bg-white text-teal-700 px-8 py-4 rounded-full font-semibold text-lg hover:bg-teal-50 transition">
-            Get Started
-            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </div>
+
+        <!-- Feature cards -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-gray-50 rounded-3xl p-8 hover:shadow-xl transition-shadow duration-300 reveal stagger-2">
+            <div
+              class="w-14 h-14 bg-[#F1473A]/10 rounded-2xl flex items-center justify-center mb-6">
+              <svg class="w-7 h-7 text-[#F1473A]" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold text-gray-900 mb-3">Easy Filing</h4>
+            <p class="text-gray-600 leading-relaxed">Submit complaints in
+              seconds with our streamlined form. Auto-suggest categories and
+              smart routing to the right department.</p>
+          </div>
+
+          <div
+            class="bg-gray-50 rounded-3xl p-8 hover:shadow-xl transition-shadow duration-300 reveal stagger-3">
+            <div
+              class="w-14 h-14 bg-[#F1473A]/10 rounded-2xl flex items-center justify-center mb-6">
+              <svg class="w-7 h-7 text-[#F1473A]" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold text-gray-900 mb-3">Smart Routing</h4>
+            <p class="text-gray-600 leading-relaxed">Complaints automatically
+              reach the right department. No more lost requests or manual
+              forwarding between offices.</p>
+          </div>
+
+          <div
+            class="bg-gray-50 rounded-3xl p-8 hover:shadow-xl transition-shadow duration-300 reveal stagger-4">
+            <div
+              class="w-14 h-14 bg-[#F1473A]/10 rounded-2xl flex items-center justify-center mb-6">
+              <svg class="w-7 h-7 text-[#F1473A]" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold text-gray-900 mb-3">Instant Alerts</h4>
+            <p class="text-gray-600 leading-relaxed">Get notified immediately
+              when status changes. Email and in-app notifications keep you in
+              the loop 24/7.</p>
+          </div>
+        </div>
+
+        <!-- Visual mockup -->
+        <div class="mt-16 bg-gray-100 rounded-3xl p-8 md:p-12 reveal">
+          <div
+            class="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div>
+              <h4 class="text-2xl font-bold text-gray-900 mb-2">Department
+                Integration</h4>
+              <p class="text-gray-600 mb-6 max-w-md">Connect with 12+ University
+                departments seamlessly. Each complaint reaches the right hands
+                instantly.</p>
+              <div class="flex gap-3">
+                <div
+                  class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center text-white font-bold">AI</div>
+                <div
+                  class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center text-white font-bold">BM</div>
+                <div
+                  class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center text-white font-bold">LA</div>
+                <div
+                  class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center text-white font-bold">PS</div>
+                <div
+                  class="w-12 h-12 bg-gray-200 rounded-xl flex items-center justify-center text-gray-600 font-bold">+8</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="text-right">
+                <p class="text-4xl font-black text-[#F1473A]">24h</p>
+                <p class="text-gray-600">Avg. Response</p>
+              </div>
+              <div class="w-px h-16 bg-gray-300"></div>
+              <div>
+                <p class="text-4xl font-black text-[#F1473A]">98%</p>
+                <p class="text-gray-600">Resolution Rate</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL PROOF SECTION -->
+    <section
+      class="min-h-[70vh] gradient-coral flex items-center relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute inset-0"
+          style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+      </div>
+
+      <div
+        class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-20">
+        <h3
+          class="reveal text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-tight mb-6">
+          100+ resolved<br>complaints, plus yours.
+        </h3>
+        <p
+          class="reveal stagger-1 text-xl sm:text-2xl text-white/90 mb-12 max-w-2xl mx-auto">
+          It only takes a few seconds to get started.
+        </p>
+        <div
+          class="reveal stagger-2 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="login.html#register"
+            class="inline-flex items-center justify-center gap-2 bg-white text-[#F1473A] px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-lg">
+            Get Started Free
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
+          </a>
+          <a href="login.html"
+            class="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition">
+            Log In
           </a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Decorative circles -->
-    <div class="absolute top-20 right-20 w-40 h-40 border border-white/20 rounded-full"></div>
-    <div class="absolute bottom-40 left-10 w-60 h-60 border border-white/10 rounded-full"></div>
-  </section>
-
-  <!-- FEATURES LIST SECTION -->
-  <section class="min-h-screen bg-white py-32">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Label -->
-      <div class="mb-8 reveal">
-        <span class="inline-block bg-[#F1473A] text-white px-6 py-3 rounded-full text-sm font-bold tracking-wide">FEATURES</span>
-      </div>
-
-      <!-- Statement -->
-      <div class="mb-16 reveal stagger-1">
-        <h3 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight max-w-4xl">
-          Contactless filing? Sure.<br>
-          Auto-routing? Check.<br>
-          <span class="text-[#F1473A]">Real-time tracking?</span> Also check.
-        </h3>
-      </div>
-
-      <!-- Feature cards -->
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-gray-50 rounded-3xl p-8 hover:shadow-xl transition-shadow duration-300 reveal stagger-2">
-          <div class="w-14 h-14 bg-[#F1473A]/10 rounded-2xl flex items-center justify-center mb-6">
-            <svg class="w-7 h-7 text-[#F1473A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
-            </svg>
-          </div>
-          <h4 class="text-xl font-bold text-gray-900 mb-3">Easy Filing</h4>
-          <p class="text-gray-600 leading-relaxed">Submit complaints in seconds with our streamlined form. Auto-suggest categories and smart routing to the right department.</p>
-        </div>
-
-        <div class="bg-gray-50 rounded-3xl p-8 hover:shadow-xl transition-shadow duration-300 reveal stagger-3">
-          <div class="w-14 h-14 bg-[#F1473A]/10 rounded-2xl flex items-center justify-center mb-6">
-            <svg class="w-7 h-7 text-[#F1473A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
-            </svg>
-          </div>
-          <h4 class="text-xl font-bold text-gray-900 mb-3">Smart Routing</h4>
-          <p class="text-gray-600 leading-relaxed">Complaints automatically reach the right department. No more lost requests or manual forwarding between offices.</p>
-        </div>
-
-        <div class="bg-gray-50 rounded-3xl p-8 hover:shadow-xl transition-shadow duration-300 reveal stagger-4">
-          <div class="w-14 h-14 bg-[#F1473A]/10 rounded-2xl flex items-center justify-center mb-6">
-            <svg class="w-7 h-7 text-[#F1473A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-            </svg>
-          </div>
-          <h4 class="text-xl font-bold text-gray-900 mb-3">Instant Alerts</h4>
-          <p class="text-gray-600 leading-relaxed">Get notified immediately when status changes. Email and in-app notifications keep you in the loop 24/7.</p>
-        </div>
-      </div>
-
-      <!-- Visual mockup -->
-      <div class="mt-16 bg-gray-100 rounded-3xl p-8 md:p-12 reveal">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-8">
-          <div>
-            <h4 class="text-2xl font-bold text-gray-900 mb-2">Department Integration</h4>
-            <p class="text-gray-600 mb-6 max-w-md">Connect with 12+ municipal departments seamlessly. Each complaint reaches the right hands instantly.</p>
-            <div class="flex gap-3">
-              <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center text-white font-bold">PW</div>
-              <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center text-white font-bold">HE</div>
-              <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center text-white font-bold">ED</div>
-              <div class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center text-white font-bold">TR</div>
-              <div class="w-12 h-12 bg-gray-200 rounded-xl flex items-center justify-center text-gray-600 font-bold">+8</div>
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-gray-100 py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-8">
+          <!-- Logo -->
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 bg-[#F1473A] rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
             </div>
+            <span class="text-2xl font-bold text-gray-900">CivicDesk</span>
           </div>
-          <div class="flex items-center gap-4">
-            <div class="text-right">
-              <p class="text-4xl font-black text-[#F1473A]">24h</p>
-              <p class="text-gray-600">Avg. Response</p>
-            </div>
-            <div class="w-px h-16 bg-gray-300"></div>
-            <div>
-              <p class="text-4xl font-black text-[#F1473A]">98%</p>
-              <p class="text-gray-600">Resolution Rate</p>
-            </div>
+
+          <!-- Links -->
+          <div class="flex items-center gap-8">
+            <a href="login.html"
+              class="text-gray-600 hover:text-gray-900 font-medium transition">Login</a>
+            <a href="login.html#register"
+              class="text-gray-600 hover:text-gray-900 font-medium transition">Register</a>
+            <a href="login.html"
+              class="text-gray-600 hover:text-gray-900 font-medium transition">Admin</a>
           </div>
+
+          <!-- Copyright -->
+          <p class="text-gray-500 text-sm">© 2026 CivicDesk. All rights
+            reserved.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- SOCIAL PROOF SECTION -->
-  <section class="min-h-[70vh] gradient-coral flex items-center relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
-    </div>
-
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-20">
-      <h3 class="reveal text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-tight mb-6">
-        10,000+ resolved<br>complaints, plus yours.
-      </h3>
-      <p class="reveal stagger-1 text-xl sm:text-2xl text-white/90 mb-12 max-w-2xl mx-auto">
-        It only takes a few seconds to get started.
-      </p>
-      <div class="reveal stagger-2 flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="login.html#register" class="inline-flex items-center justify-center gap-2 bg-white text-[#F1473A] px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-lg">
-          Get Started Free
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
-        </a>
-        <a href="login.html" class="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition">
-          Log In
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-white border-t border-gray-100 py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-        <!-- Logo -->
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 bg-[#F1473A] rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-            </svg>
-          </div>
-          <span class="text-2xl font-bold text-gray-900">CivicDesk</span>
-        </div>
-
-        <!-- Links -->
-        <div class="flex items-center gap-8">
-          <a href="login.html" class="text-gray-600 hover:text-gray-900 font-medium transition">Login</a>
-          <a href="login.html#register" class="text-gray-600 hover:text-gray-900 font-medium transition">Register</a>
-          <a href="login.html" class="text-gray-600 hover:text-gray-900 font-medium transition">Admin</a>
-        </div>
-
-        <!-- Copyright -->
-        <p class="text-gray-500 text-sm">© 2026 CivicDesk. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
+    <script>
     // Intersection Observer for scroll animations (bidirectional)
     const observerOptions = {
       threshold: 0.15
@@ -724,5 +823,5 @@
       });
     });
   </script>
-</body>
+  </body>
 </html>
