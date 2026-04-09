@@ -1,4 +1,4 @@
-// ─── emailService.js — uses Resend HTTP API (works on Render free tier) ───────
+// ─── emailService.js — uses Brevo HTTP API (works on Render free tier) ────────
 
 const sendNotificationEmail = async (to, subject, html) => {
   if (process.env.EMAIL_ENABLED !== 'true') {
@@ -7,28 +7,31 @@ const sendNotificationEmail = async (to, subject, html) => {
   }
 
   try {
-    const response = await fetch('https://api.resend.com/emails', {
+    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+        'api-key': process.env.BREVO_API_KEY,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: `${process.env.EMAIL_FROM_NAME || 'CivicDesk'} <${process.env.EMAIL_FROM}>`,
-        to,
+        sender: {
+          name: process.env.EMAIL_FROM_NAME || 'CivicDesk',
+          email: process.env.EMAIL_FROM
+        },
+        to: [{ email: to }],
         subject,
-        html
+        htmlContent: html
       })
     });
 
     const data = await response.json();
 
     if (!response.ok) {
-      console.error('❌ Email send failed to', to, '|', data.message || JSON.stringify(data));
+      console.error('❌ Email send failed to', to, '|', JSON.stringify(data));
       return false;
     }
 
-    console.log('✅ Email sent to', to, '| id:', data.id);
+    console.log('✅ Email sent to', to, '| messageId:', data.messageId);
     return true;
 
   } catch (err) {
