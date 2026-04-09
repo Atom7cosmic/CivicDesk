@@ -5,7 +5,7 @@ const sendNotificationEmail = async (to, subject, html) => {
     console.log('Email notifications disabled (EMAIL_ENABLED != true)');
     return false;
   }
-
+  console.log('📧 Attempting to send email to', to, '| subject:', subject);
   try {
     const response = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
